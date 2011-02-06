@@ -1,18 +1,20 @@
 # 0.1.3
 
-asdada
+TODO
 
 # 0.1.2
 
-asdasdasd
+TODO
 
 # 0.1.1
 
-asdadasd
+TODO
 
 # 0.1.0
 
-## Core:
+TODO
+
+## Core Features:
 * login/logout, optional redirect on login to where the user tried to reach before, configurable redirect for non-logged-in users.
 * password encryption, algorithms: bcrypt(default), md5, sha1, sha256, sha512, aes256, custom(yours!), none. Configurable stretches and salt.
 * configurable attribute names for username, password and email.
