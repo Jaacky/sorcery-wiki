@@ -5,6 +5,7 @@
 # 0.1.1
 
 # 0.1.0
+
 ## Core:
 * login/logout, optional redirect on login to where the user tried to reach before, configurable redirect for non-logged-in users.
 * password encryption, algorithms: bcrypt(default), md5, sha1, sha256, sha512, aes256, custom(yours!), none. Configurable stretches and salt.
