@@ -10,7 +10,7 @@ TODO
 
 # 0.1.1
 
-TODO
+Fixed bug with BCrypt not being used properly by the lib and thus not working for authentication.
 
 # 0.1.0
 
