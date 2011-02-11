@@ -2,7 +2,8 @@
 
 ## 0.1.4
 
-Added Activity Logging submodule (see lib/sorcery/model/submodules/activity_logging.rb):
+Added activity logging submodule.
+### Activity Logging (see lib/sorcery/model/submodules/activity_logging.rb):
 * automatic logging of last login, last logout and last activity time.
 * an easy method of collecting the list of currently logged in users.
 * configurable timeout by which to decide whether to include a user in the list of logged in users.
