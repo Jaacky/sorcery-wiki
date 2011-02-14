@@ -7,4 +7,6 @@ By adding small configuration blocks, and calling a few Sorcery methods in your 
 
 You can see how controllers, models, migrations and views can be used with Sorcery by checking out [this example application](https://github.com/NoamB/sorcery-example-app).
 
-[[Core Api]]
+[[Core API]]
+
+[[Remember Me API]]
