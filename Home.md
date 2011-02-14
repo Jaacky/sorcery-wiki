@@ -12,3 +12,5 @@ You can see how controllers, models, migrations and views can be used with Sorce
 [[Remember Me API]]
 
 [[Session Timeout]]
+
+[[User Activation]]
