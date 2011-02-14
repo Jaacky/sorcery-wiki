@@ -1,3 +1,8 @@
 ### Model
 
-User.activate! # will make the user active, send success email if configured, and clear activation code.
+```ruby
+# will make the user active, 
+# send success email if configured, 
+# and clear the activation code.
+@user.activate! 
+```
