@@ -10,5 +10,7 @@ To "forget me" just logout.
 
 If you need finer control you can use the methods:
 
-`remember_me!`
-`forget_me!`
+```
+remember_me!
+forget_me!
+```
