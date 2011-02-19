@@ -16,9 +16,9 @@ The core controller API is extremely short and simple:
 
 > logged_in_user => runs the controller method of the same name.
 
-### Model Configuration
+### Configuration
 
-Used like this:
+Used like this in the model/controller:
 
 ```ruby
 activate_sorcery! do |config|
@@ -26,43 +26,4 @@ activate_sorcery! do |config|
 end
 ```
 
-
-**:username_attribute_name** - change default username attribute, for example, to use :email as the login.
-
-
-**:password_attribute_name** - change *virtual* password attribute, the one which is used until an encrypted one is
-
- 
-**:email_attribute_name** - change default email attribute.
-
-
-**:crypted_password_attribute_name** - change default crypted_password attribute.
-
-
-**:salt_join_token** - what pattern to use to join the password with the salt.
-
-
-**:salt_attribute_name** - change default salt attribute.
-
-
-**:stretches** - how many times to apply encryption to the password.
-
-
-**:encryption_key** - encryption key used to encrypt reversible encryptions such as AES256.
-
-
-**:before_authenticate** - an array of method names to call before authentication completes. used internally.
-
-
-**:after_config** - an array of method names to call after configuration by user. used internally.
-
-
-**:encryption_provider** - change default encryption_provider.
-
-
-**:custom_encryption_provider** - use an external encryption class.
-
-
-**:encryption_algorithm** - encryption algorithm name. See 'encryption_algorithm=' below for available options.
-
-
+For the specific options available in the model/controller please see the documentation.
