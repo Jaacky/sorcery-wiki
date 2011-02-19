@@ -2,6 +2,10 @@ Welcome to the Sorcery wiki!
 
 This wiki is a work in progress **and it looks like it**.
 
+
+[[Changelog]]
+
+
 ### Summary:
 
 Sorcery aims to make your life easier by giving you an easy API to write your own user authentication flow with.
