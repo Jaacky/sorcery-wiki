@@ -3,12 +3,22 @@
 ## 0.1.4
 
 Added activity logging submodule.
-### Activity Logging (see lib/sorcery/model/submodules/activity_logging.rb):
+
+
+### Activity Logging:
 * automatic logging of last login, last logout and last activity time.
 * an easy method of collecting the list of currently logged in users.
 * configurable timeout by which to decide whether to include a user in the list of logged in users.
 
+
 Fixed bug in basic_auth - it didn't set the session[:user_id] on successful login and tried to relogin from basic_auth on every action.
+
+
+Added Reset Password hammering protection and updated the API.
+
+
+Totally rewritten Brute Force Protection submodule.
+
 
 ## 0.1.3
 
