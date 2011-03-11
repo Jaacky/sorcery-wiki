@@ -134,7 +134,7 @@ And define some routes. At this point make sure your routes.rb file includes the
     match 'logout' => 'user_sessions#destroy', :as => :logout
 ```
 
-1 Last thing, we need some navigation links, and a way to display flash messages:
+One Last thing, we need some navigation links, and a way to display flash messages:
 ```ruby
     # app/views/layouts/application.html.erb
     <!DOCTYPE html>
