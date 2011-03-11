@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0
+
+Added OAuth submodule.
+
+### OAuth:
+* OAuth1 and OAuth2 support (currently twitter & facebook)
+* configurable db field names and authentications table.
+
+Some bug fixes: 'return_to' feature, brute force permanent ban.
+
+
 ## 0.1.4
 
 Added activity logging submodule.
