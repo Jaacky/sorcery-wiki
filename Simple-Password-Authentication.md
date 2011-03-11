@@ -98,8 +98,7 @@ Let's create the login form:
 ```ruby
     # app/views/user_sessions/new.html.erb
     <h1>Login</h1>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+
     <%= render 'form' %>
 
     <%= link_to 'Back', user_sessions_path %>
@@ -134,3 +133,37 @@ And define some routes. At this point make sure your routes.rb file includes the
     match 'login' => 'user_sessions#new', :as => :login
     match 'logout' => 'user_sessions#destroy', :as => :logout
 ```
+
+1 Last thing, we need some navigation links, and a way to display flash messages:
+```ruby
+    # app/views/layouts/application.html.erb
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Tutorial</title>
+      <%= stylesheet_link_tag :all %>
+      <%= javascript_include_tag :defaults %>
+      <%= csrf_meta_tag %>
+    </head>
+    <body>
+    
+    	<div id="nav">
+    		<% if current_user %>
+            	<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+            	<%= link_to "Logout", :logout %>
+            <% else %>
+            	<%= link_to "Register", new_user_path %> |
+            	<%= link_to "Login", :login %>
+            <% end %>
+    	</div>
+        <div>
+    		<p id="notice"><%= notice %></p>
+    		<p id="alert"><%= alert %></p>
+    	</div>
+    <%= yield %>
+    
+    </body>
+    </html>
+```
+
+Now you can click on the "Login" link, enter your username and password, and get redirected to the users list with a nice flash message. Try the "Logout" link as well.
