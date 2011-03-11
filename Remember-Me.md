@@ -6,6 +6,27 @@ First add the remember_me submodule:
     config.sorcery.submodules = [:remember_me, blabla, blablu, ...]
 ```
 
+Now you'll need some new db fields so add a migration that looks like this:
+```ruby
+    class AddRememberMeTokenToUsers < ActiveRecord::Migration
+      def self.up
+        add_column :users, :remember_me_token, :string, :default => nil
+        add_column :users, :remember_me_token_expires_at, :datetime, :default => nil
+    
+        add_index :users, :remember_me_token
+      end
+
+      def self.down
+        remove_index :users, :remember_me_token
+    
+        remove_column :users, :remember_me_token_expires_at
+        remove_column :users, :remember_me_token
+      end
+    end
+```
+
+And run rake db:migrate.
+
 Adding remember me to the app is very simple - just use the good old **login** method with a third parameter.
 This is usually the result of a "Remember me" check box from a form.
 If it's anything that evals to true, it will 'remember' the user.
