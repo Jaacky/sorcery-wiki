@@ -116,10 +116,6 @@ Let's create the login form:
       <div class="actions">
         <%= submit_tag "Login" %>
       </div>
-      <div>
-      	<%= label_tag "keep me logged in" %><br />
-        <%= check_box_tag :remember %>
-      </div>
     <% end %>
 ```
 
