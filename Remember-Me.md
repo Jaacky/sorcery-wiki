@@ -1,15 +1,17 @@
-### Controller
+In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-Use the good old login method with a third param.
-This is usually the result of a "Remember me" checkbox from a form.
-If it's anything that evals to true, it will remember.
+Adding remember me to the app is very simple - just use the good old **login** method with a third parameter.
+This is usually the result of a "Remember me" check box from a form.
+If it's anything that evals to true, it will 'remember' the user.
+```ruby
+    # app/controllers/user_sessions_controller.rb
+    @user = login(params[:username],params[:password],params[:remember])
+```
 
-> @user = login(params[:email],params[:password],params[:remember])
-
-To "forget me" just logout.  
+To "forget me" just **logout**.  
   
-If you need finer control you can use the controller methods:
-
-> remember_me!
-
-> forget_me!
+If you ever need finer control you can use the controller methods:
+```ruby
+    remember_me!
+    forget_me!
+```
