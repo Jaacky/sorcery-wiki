@@ -15,3 +15,5 @@ If you ever need finer control you can use the controller methods:
     remember_me!
     forget_me!
 ```
+
+There are options to configure expiration time and more. See the gem docs for a full list.
