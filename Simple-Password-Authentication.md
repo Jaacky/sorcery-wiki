@@ -95,7 +95,7 @@ Make it look like this:
 'return_or_redirect_to' takes care of redirecting the user to the page he asked for before reaching the login form, if such a page exists.
 
 Let's create the login form:
-```html+erb
+```ruby
     # app/views/user_sessions/new.html.erb
     <h1>Login</h1>
 
@@ -135,7 +135,7 @@ And define some routes. At this point make sure your routes.rb file includes the
 ```
 
 1 Last thing, we need some navigation links, and a way to display flash messages:
-```html+erb
+```ruby
     # app/views/layouts/application.html.erb
     <!DOCTYPE html>
     <html>
