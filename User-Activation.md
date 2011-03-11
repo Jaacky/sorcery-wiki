@@ -1,5 +1,7 @@
 Under construction - incomplete!
 
+In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
+
 First add the user_activation submodule:
 ```ruby
     # config/application.rb
