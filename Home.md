@@ -26,8 +26,9 @@ Hopefully, I've achieved this. If not, let me know.
 
 You can see how controllers, models, migrations and views can be used with Sorcery by checking out [this example application](https://github.com/NoamB/sorcery-example-app).
 
+Tutorials:
 
-[[Core]]
+[[Simple Password Authentication]]
 
 [[Remember Me]]
 
