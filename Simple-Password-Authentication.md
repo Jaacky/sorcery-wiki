@@ -74,7 +74,7 @@ Make it look like this:
   
       def create
         respond_to do |format|
-          if @user = login(params[:email],params[:password])
+          if @user = login(params[:username],params[:password])
             format.html { return_or_redirect_to(:users, :notice => 'Login successfull.') }
             format.xml { render :xml => @user, :status => :created, :location => @user }
           else
@@ -107,8 +107,8 @@ Let's create the login form:
     # app/views/user_sessions/_form.html.erb
     <%= form_tag user_sessions_path, :method => :post do %>
       <div class="field">
-        <%= label_tag :email %><br />
-        <%= text_field_tag :email %>
+        <%= label_tag :username %><br />
+        <%= text_field_tag :username %>
       </div>
       <div class="field">
         <%= label_tag :password %><br />
@@ -122,4 +122,15 @@ Let's create the login form:
         <%= check_box_tag :remember %>
       </div>
     <% end %>
+```
+
+And define some routes. At this point make sure your routes.rb file includes these routes and remove others:
+```ruby
+    # config/routes.rb
+    root :to => 'users#index'
+    resources :user_sessions
+    resources :users
+  
+    match 'login' => 'user_sessions#new', :as => :login
+    match 'logout' => 'user_sessions#destroy', :as => :logout
 ```
