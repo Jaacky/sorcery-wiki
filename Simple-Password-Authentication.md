@@ -167,3 +167,31 @@ One Last thing, we need some navigation links, and a way to display flash messag
 ```
 
 Now you can click on the "Login" link, enter your username and password, and get redirected to the users list with a nice flash message. Try the "Logout" link as well.
+
+OK, that's nice, but our logged-out users can do anything a logged-in user can, like editing users for example.
+Let's fix that by protecting our sensitive controller actions:
+
+```ruby
+    # app/controllers/application_controller.rb
+    before_filter :require_login
+
+    # app/controllers/users_controller.rb
+    skip_before_filter :require_login, :only => [:index, :new, :create]
+
+    # app/controllers/user_sessions_controller.rb
+    skip_before_filter :require_login, :except => [:destroy]
+```
+
+There's only one problem. The default action of 'require_login' when blocking a logged-out user is to redirect to application root. Our root is the default Rails index.html page. Let's fix that by overriding the default behavior:
+
+    rm public index.html
+
+```ruby
+    # app/controllers/application_controller.rb
+    protected
+    def not_authenticated
+      redirect_to root_path, :alert => "Please login first."
+    end
+```
+
+Now some parts of the application are protected from logged-out users. Also, if you try to edit a user while logged out, get denied and then login at the login form, you'll see you are automatically taken to the edit page. If 'not_authenticated' is a problematic name for you, it is possible to supply a different method at configuration time, that will be called when a user is denied due to being logged-out.
