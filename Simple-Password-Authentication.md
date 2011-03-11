@@ -18,7 +18,8 @@ We'll start by adding the User resource so that we'll be able to register new us
     rake db:migrate
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
-We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database. 
+We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
+```ruby
     # app/views/users/_form.html.erb
     <div class="field">
       <%= f.label :password %><br />
@@ -28,14 +29,17 @@ We'll need to add a password 'virtual' field instead, that will hold the passwor
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </div>
+```
 
 The virtual attributes will be added via 'validates_confirmation_of' as seen below. You may also want to allow the user to change only some of his attributes like so:
+```ruby
     # app/models/user.rb
     class User < ActiveRecord::Base
       attr_accessible :email, :password, :password_confirmation
   
       validates_confirmation_of :password, :on => :create, :message => "should match confirmation"
     end
+```
 
 It's time to add Sorcery in, so we'll get a crypted password when registering a user.
     # Gemfile
@@ -43,6 +47,7 @@ It's time to add Sorcery in, so we'll get a crypted password when registering a 
     bundle install
 
 We need to let the User model know it is using sorcery. We do that like this:
+```ruby
     # app/models/user.rb
     class User < ActiveRecord::Base
       attr_accessible :email, :password, :password_confirmation
@@ -50,10 +55,71 @@ We need to let the User model know it is using sorcery. We do that like this:
 
       validates_confirmation_of :password, :on => :create, :message => "should match confirmation"
     end
+```
 
 Now run the app and create a new user.
 Voila! The password was automatically encrypted, and a salt was also auto-created!
-By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem).
+By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
 
+Now we need a way to login after registering.
+    rails g controller UserSessions new create destroy
 
+Make it look like this:
+```ruby
+    # app/controllers/user_sessions_controller.rb
+    class UserSessionsController < ApplicationController
+      def new
+        @user = User.new
+      end
+  
+      def create
+        respond_to do |format|
+          if @user = login(params[:email],params[:password])
+            format.html { return_or_redirect_to(:users, :notice => 'Login successfull.') }
+            format.xml { render :xml => @user, :status => :created, :location => @user }
+          else
+            format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
+            format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+          end
+        end
+      end
+    
+      def destroy
+        logout
+        redirect_to(:users, :notice => 'Logged out!')
+      end
+    end
+```
 
+'login' takes care of login, 'logout' takes care of logout.
+'return_or_redirect_to' takes care of redirecting the user to the page he asked for before reaching the login form, if such a page exists.
+
+Let's create the login form:
+```ruby
+    # app/views/user_sessions/new.html.erb
+    <h1>Login</h1>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+    <%= render 'form' %>
+
+    <%= link_to 'Back', user_sessions_path %>
+
+    # app/views/user_sessions/_form.html.erb
+    <%= form_tag user_sessions_path, :method => :post do %>
+      <div class="field">
+        <%= label_tag :email %><br />
+        <%= text_field_tag :email %>
+      </div>
+      <div class="field">
+        <%= label_tag :password %><br />
+        <%= password_field_tag :password %>
+      </div>
+      <div class="actions">
+        <%= submit_tag "Login" %>
+      </div>
+      <div>
+      	<%= label_tag "keep me logged in" %><br />
+        <%= check_box_tag :remember %>
+      </div>
+    <% end %>
+```
