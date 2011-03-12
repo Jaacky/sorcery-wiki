@@ -35,6 +35,7 @@ Now for the fun stuff - Let's say you want to display on your site the usernames
 ```ruby
     # app/controllers/application_controller.rb
     ...
+    helper_method :current_users_list
     protected
     def current_users_list
       current_users.map {|u| u.username}.join(", ")
