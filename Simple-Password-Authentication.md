@@ -102,7 +102,8 @@ Let's create the login form:
     <%= render 'form' %>
 
     <%= link_to 'Back', user_sessions_path %>
-
+```
+```ruby
     # app/views/user_sessions/_form.html.erb
     <%= form_tag user_sessions_path, :method => :post do %>
       <div class="field">
