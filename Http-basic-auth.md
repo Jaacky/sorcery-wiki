@@ -29,4 +29,14 @@ The last thing to do is set a realm. This is the site name the user will see in 
 
 Adding it in the hash for ApplicationController makes it the default for all controllers.
 
+We just need to route the new action we've added to the controller:
+```ruby
+    resources :users do
+      collection do
+        get :login_from_http_basic
+      end
+      ...
+    end
+```
+
 That's it!
