@@ -57,7 +57,7 @@ We need to let the User model know it is using sorcery. We do that like this:
     end
 ```
 
-Now run the app and create a new user.
+Now run the app and create a new user. 
 Voila! The password was automatically encrypted, and a salt was also auto-created!
 By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
 
@@ -177,6 +177,16 @@ Let's fix that by protecting our sensitive controller actions:
 
     # app/controllers/user_sessions_controller.rb
     skip_before_filter :require_login, :except => [:destroy]
+```
+
+The default controller code redirects you to "show" action after "create" completes.
+This means when you register a user, you will be redirected to a protected action, so let's fix it by redirecting to the users index action:
+```ruby
+    # app/controllers/users_controller.rb
+    ...
+    if @user.save
+        format.html { redirect_to(:users, :notice => 'User was successfully created.') }
+    ...
 ```
 
 There's only one problem. The default action of 'require_login' when blocking a logged-out user is to redirect to application root. Our root is the default Rails index.html page. Let's fix that by overriding the default behavior:
