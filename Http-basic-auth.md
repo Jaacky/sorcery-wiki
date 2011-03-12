@@ -4,6 +4,7 @@ Let's add the submodule:
 ```ruby
     # config/application.rb
     config.sorcery.submodules = [:http_basic_auth, blabla, blablu, ...]
+```
 
 Now we'll add a before filter in the area that we want to protect with basic auth:
 ```ruby
