@@ -24,9 +24,20 @@ First And some db fields:
       end
     end
 ```
+    rake db:migrate
 
-And a mailer:
-    rails g mailer UserMailer
+And a mailer with two actions:
+    rails g mailer UserMailer activation_needed_email activation_success_email
+
+We need to edit the mailer and add a 'user' parameter to each action because sorcery will send each action the new user as a parameter:
+```ruby
+    # app/mailers/user_mailer.rb
+    def activation_needed_email(user)
+    ...
+
+    def activation_success_email(user)
+    ...
+```
 
 Then add the user_activation submodule:
 ```ruby
@@ -42,6 +53,6 @@ And activate the User model with our mailer defined:
     end
 ```
 
+Now when a user is created, an email will be sent to him. Currently it's not a very informative email, but we will fix that.
 
-Now when a user is created, an email will be sent to him with activation instructions.
 **@user.activate!** will make the user active, send success email if configured and clear the activation code.
