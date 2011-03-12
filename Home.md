@@ -36,4 +36,14 @@ Tutorials:
 
 [[User Activation]]
 
+[[HTTP Basic Auth]]
+
+[[Reset Password]]
+
+[[Activity Logging]]
+
+[[Brute Force Protection]]
+
+[[OAuth]]
+
 coming up soon... the rest.
