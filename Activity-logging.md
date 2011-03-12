@@ -44,10 +44,10 @@ Now for the fun stuff - Let's say you want to display on your site the usernames
 ```ruby
     # app/views/layouts/application.html.erb
     ...
-  	<% if current_user %>
-		<div id="current_users"> Currently active users: <%= current_users_list %></div>
-	<% end %>
-      <%= yield %>
+    <% if current_user %>
+      <div id="current_users"> Currently active users: <%= current_users_list %></div>
+    <% end %>
+    <%= yield %>
     ...
 ```
 
