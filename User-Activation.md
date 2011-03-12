@@ -53,6 +53,67 @@ And activate the User model with our mailer defined:
     end
 ```
 
-Now when a user is created, an email will be sent to him. Currently it's not a very informative email, but we will fix that.
+Now when a user is created, an email will be sent to him. Currently it's not a very informative email, but we will fix that:
+```ruby
+    # app/mailers/user_mailer.rb
+    def activation_needed_email(user)
+      @user = user
+      @url  = "http://0.0.0.0:3000/users/#{user.activation_code}/activate"
+      mail(:to => user.email,
+           :subject => "Welcome to My Awesome Site")
+    end
+    
+    def activation_success_email(user)
+      @user = user
+      @url  = "http://0.0.0.0:3000/login"
+      mail(:to => user.email,
+           :subject => "Your account is now activated")
+    end
+    
+    # app/views/user_mailer/activation_needed_email.txt.erb
+    Welcome to example.com, <%= @user.username %>
+    ===============================================
+     
+    You have successfully signed up to example.com,
+    your username is: <%= @user.username %>.
+     
+    To login to the site, just follow this link: <%= @url %>.
+     
+    Thanks for joining and have a great day!
+
+    # app/views/user_mailer/activation_success_email.txt.erb
+    Congratz, <%= @user.username %>
+    ===============================================
+     
+    You have successfully activated your example.com account,
+    your username is: <%= @user.username %>.
+     
+    To login to the site, just follow this link: <%= @url %>.
+     
+    Thanks for joining and have a great day!
+```
+
+Nice. Now we need to have a controller action that will activate users:
+```ruby
+    # app/controllers/users_controller.rb
+    def activate
+      if @user = User.load_from_activation_token(params[:id])
+        @user.activate!
+        redirect_to(login_path, :notice => 'User was successfully activated.')
+      else
+        not_authenticated
+      end
+    end
+```
+
+And fix the routes accordingly:
+```ruby
+    # config/routes.rb
+    resources :users do
+      member do
+        get :activate
+      end
+    end
+```
 
 **@user.activate!** will make the user active, send success email if configured and clear the activation code.
