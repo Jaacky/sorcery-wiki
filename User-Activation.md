@@ -69,7 +69,8 @@ Now when a user is created, an email will be sent to him. Currently it's not a v
       mail(:to => user.email,
            :subject => "Your account is now activated")
     end
-    
+```
+```ruby
     # app/views/user_mailer/activation_needed_email.txt.erb
     Welcome to example.com, <%= @user.username %>
     ===============================================
@@ -80,7 +81,8 @@ Now when a user is created, an email will be sent to him. Currently it's not a v
     To login to the site, just follow this link: <%= @url %>.
      
     Thanks for joining and have a great day!
-
+```
+```ruby
     # app/views/user_mailer/activation_success_email.txt.erb
     Congratz, <%= @user.username %>
     ===============================================
@@ -93,9 +95,11 @@ Now when a user is created, an email will be sent to him. Currently it's not a v
     Thanks for joining and have a great day!
 ```
 
-Nice. Now we need to have a controller action that will activate users:
+Nice. The user will get an activation URL, that won't work because we didn't add the code for it. Let's add a controller action that will activate users:
 ```ruby
     # app/controllers/users_controller.rb
+    skip_before_filter :require_login, :only => [:index, :new, :create, :activate]
+
     def activate
       if @user = User.load_from_activation_token(params[:id])
         @user.activate!
@@ -116,4 +120,8 @@ And fix the routes accordingly:
     end
 ```
 
-**@user.activate!** will make the user active, send success email if configured and clear the activation code.
+**@user.activate!** will make the user active, send a success email and clear the activation code.
+
+If you don't want a success email, in the sorcery configuration of the model, set 'activation_success_email_method_name' to nil.
+
+You can set various other options for this submodule. See the docs for details.
