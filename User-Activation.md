@@ -1,5 +1,3 @@
-Under construction - incomplete!
-
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First And some db fields:
