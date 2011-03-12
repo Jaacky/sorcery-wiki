@@ -83,7 +83,8 @@ Add the rest:
 ```ruby
     # config/routes.rb
     resources :password_resets
-
+```
+```ruby
     # app/views/user_mailer/reset_password.text.erb
     Hello, <%= @user.email %>
     ===============================================
@@ -93,7 +94,8 @@ Add the rest:
     To choose a new password, just follow this link: <%= @url %>.
  
     Have a great day!
-
+```
+```ruby
     # app/mailers/user_mailer.rb
     def reset_password_email(user)
       @user = user
@@ -103,4 +105,64 @@ Add the rest:
     end
 ```
 
-Here's the mailer stuff:
+We'll need to tell sorcery what mailer we use:
+```ruby
+    # app/models/user.rb
+    activate_sorcery! do |config|
+      config.reset_password_mailer = UserMailer
+    end
+```
+
+Now we need some work on the reset password views:
+```ruby
+    # app/views/password_resets/_form.html.erb
+    <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="field">
+      	<%= f.label :email %><br />
+        <%= @user.email %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+    	<%= hidden_field_tag :token, @token %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+```
+
+I like to put the "forgot password?" form in the same page as the login form:
+```ruby
+    # app/views/user_sessions/new.html.erb
+    ...
+    <h1>Forgot Password?</h1>
+    <%= render 'forgot_password_form' %>
+```
+```ruby
+    # app/views/user_sessions/_forgot_password_form.html.erb
+    <%= form_tag password_resets_path, :method => :post do %>
+      <div class="field">
+        <%= label_tag :email %><br />
+        <%= text_field_tag :email %> <%= submit_tag "Reset my password!" %>
+      </div>
+    <% end %>
+```
+
+So now in the login form a user can put his email in the 'forgot password' form, get instructions to his email with a link. With that link, we get to a form where the user can enter a new password, and from there he is set.
