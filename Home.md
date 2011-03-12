@@ -1,7 +1,6 @@
 Welcome to the Sorcery wiki!
 
-This wiki is a work in progress **and it looks like it**.
-
+This wiki is a work in progress, and constantly improving.
 
 [[Changelog]]
 
@@ -45,5 +44,3 @@ Tutorials:
 [[Brute Force Protection]]
 
 [[OAuth]]
-
-coming up soon... the rest.
