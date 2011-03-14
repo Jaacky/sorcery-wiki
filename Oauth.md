@@ -32,7 +32,8 @@ Now we need to associate User with Authentication:
     # app/models/user.rb
     class User < ActiveRecord::Base
       attr_accessible :email, :password, :password_confirmation, :authentications_attributes
-      
+      activate_sorcery!
+
       has_many :authentications, :dependent => :destroy
       accepts_nested_attributes_for :authentications
     end
