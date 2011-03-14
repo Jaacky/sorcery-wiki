@@ -1,5 +1,7 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
+**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use it!**
+
 First Add some db fields:
     rails g migration CreateAuthentications
 
