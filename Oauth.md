@@ -32,7 +32,9 @@ Now we need to associate User with Authentication:
     # app/models/user.rb
     class User < ActiveRecord::Base
       attr_accessible :email, :password, :password_confirmation, :authentications_attributes
-      activate_sorcery!
+      activate_sorcery! do |config|
+        config.authentications_class = Authentication
+      end
 
       has_many :authentications, :dependent => :destroy
       accepts_nested_attributes_for :authentications
@@ -73,7 +75,8 @@ We'll need a controller to handle the authentications:
         else
           begin
             @user = create_from_provider!(provider)
-            @user.activate!
+            # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
+
             reset_session # protect from session fixation attack
             login_user(@user)
             redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
