@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+Fixed bug with OAuth submodule - oauth gems were not required properly in gem.
+
+
+Fixed bug with OAuth submodule - Authentications class was not passed between model and controller in all cases resulting in Nil exception.
+
+
 ## 0.2.0
 
 Added OAuth submodule.
