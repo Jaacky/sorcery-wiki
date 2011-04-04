@@ -1,6 +1,6 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-First And some db fields:
+First add some db fields:
     rails g migration AddActivationToUsers
 
 ```ruby
@@ -26,6 +26,9 @@ First And some db fields:
 
 And a mailer with two actions:
     rails g mailer UserMailer activation_needed_email activation_success_email
+
+You really don't have to use ActionMailer. You can use any ruby object that responds to the above actions. Actually these method names are configurable too! This is useful in case you want to send emails in the background, with gems such as 'delayed_job'. Simply pass your own 'mailer' and make it create the background jobs as you normally would, when triggered by Sorcery.
+
 
 We need to edit the mailer and add a 'user' parameter to each action because sorcery will send each action the new user as a parameter:
 ```ruby
