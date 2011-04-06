@@ -3,10 +3,13 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 **Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use it! Tutorial was updated for v0.2.1**
 
 First Add some db fields:
-    rails g migration CreateAuthentications
+```
+    rails g sorcery_migration oauth
+```
 
+Which will create:
 ```ruby
-    class CreateAuthentications < ActiveRecord::Migration
+    class SorceryOauth < ActiveRecord::Migration
       def self.up
         create_table :authentications do |t|
           t.integer :user_id, :null => false
@@ -21,7 +24,9 @@ First Add some db fields:
       end
     end
 ```
+```
     rake db:migrate
+```
 
 Let's add the submodule too:
 ```ruby
