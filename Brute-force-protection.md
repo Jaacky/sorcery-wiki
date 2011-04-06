@@ -1,10 +1,14 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First Add some db fields:
-    rails g migration AddBruteForceProtectionToUsers
+```
+    rails g sorcery_migration brute_force_protection
+```
 
+
+Which will create:
 ```ruby
-    class AddBruteForceProtectionToUsers < ActiveRecord::Migration
+    class SorceryBruteForceProtection < ActiveRecord::Migration
       def self.up
         add_column :users, :failed_logins_count, :integer, :default => 0
         add_column :users, :lock_expires_at, :datetime, :default => nil
@@ -16,7 +20,9 @@ First Add some db fields:
       end
     end
 ```
+```
     rake db:migrate
+```
 
 Then add the brute_force_protection submodule:
 ```ruby
