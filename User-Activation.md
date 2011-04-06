@@ -1,10 +1,14 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First add some db fields:
-    rails g migration AddActivationToUsers
+```
+    rails g sorcery_migration user_activation
+```
 
+
+Which will create:
 ```ruby
-    class AddActivationToUsers < ActiveRecord::Migration
+    class SorceryUserActivation < ActiveRecord::Migration
       def self.up
         add_column :users, :activation_state, :string, :default => nil
         add_column :users, :activation_token, :string, :default => nil
