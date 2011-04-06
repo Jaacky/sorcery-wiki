@@ -2,20 +2,38 @@ In this tutorial we will generate a new Rails 3 app and add sorcery as the authe
 At the end of the tutorial we will be able to register a user, and then login and logout with a username and a password.
 
 I'm using rvm so i'll first create a separate gemset:
+```
     rvm gemset create tutorial
     rvm use 1.9.2@tutorial
+```
+
 
 Now I'll get rails:
+```
     gem install rails mysql2
+```
+
 
 Now I'll create a new app with mysql database:
+```
     rails new tutorial -d mysql
     cd tutorial
     rake db:create
+```
+
 
 We'll start by adding the User resource so that we'll be able to register new users:
+```
     rails g scaffold User username:string email:string crypted_password:string salt:string
     rake db:migrate
+```
+
+
+There is also a generator for migrations which you can use if your app doesn't need the whole scaffold. To generate the basic User migration use it like so:
+```
+    rails g sorcery_migration core
+```
+
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
