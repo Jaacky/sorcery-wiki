@@ -25,7 +25,17 @@ Now you'll need some new db fields so add a migration that looks like this:
     end
 ```
 
-And run rake db:migrate.
+There is now actually a generator for this:
+```
+    rails g sorcery_migration remember_me
+```
+
+
+And then run
+```
+    rake db:migrate.
+```
+
 
 Adding remember me to the app is very simple - just use the good old **login** method with a third parameter.
 This is usually the result of a "Remember me" check box from a form.
