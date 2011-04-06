@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+Added Sinatra support!
+
+
+Added Rails 3 generator for migrations
+
+
 ## 0.2.1
 
 Fixed bug with OAuth submodule - oauth gems were not required properly in gem.
