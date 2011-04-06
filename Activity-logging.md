@@ -8,7 +8,7 @@ Let's add the db stuff first:
 
 Which will create:
 ```ruby
-    class AddActivityLoggingToUsers < ActiveRecord::Migration
+    class SorceryActivityLogging < ActiveRecord::Migration
       def self.up
         add_column :users, :last_login_at,     :datetime, :default => nil
         add_column :users, :last_logout_at,    :datetime, :default => nil
