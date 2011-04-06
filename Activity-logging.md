@@ -1,8 +1,12 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 Let's add the db stuff first:
-    rails g migration AddActivityLoggingToUsers
+```
+    rails g sorcery_migration activity_logging
+```
 
+
+Which will create:
 ```ruby
     class AddActivityLoggingToUsers < ActiveRecord::Migration
       def self.up
