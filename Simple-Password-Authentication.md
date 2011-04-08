@@ -1,3 +1,5 @@
+**NOTE: 'redirect_back_or_to' used to be 'return_to_or_redirect' in v0.3.0 and before.**
+
 In this tutorial we will generate a new Rails 3 app and add sorcery as the authentication engine.
 At the end of the tutorial we will be able to register a user, and then login and logout with a username and a password.
 
@@ -93,7 +95,7 @@ Make it look like this:
       def create
         respond_to do |format|
           if @user = login(params[:username],params[:password])
-            format.html { return_or_redirect_to(:users, :notice => 'Login successfull.') }
+            format.html { redirect_back_or_to(:users, :notice => 'Login successfull.') }
             format.xml { render :xml => @user, :status => :created, :location => @user }
           else
             format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
@@ -110,7 +112,7 @@ Make it look like this:
 ```
 
 'login' takes care of login, 'logout' takes care of logout.
-'return_or_redirect_to' takes care of redirecting the user to the page he asked for before reaching the login form, if such a page exists.
+'redirect_back_or_to' takes care of redirecting the user to the page he asked for before reaching the login form, if such a page exists.
 
 Let's create the login form:
 ```ruby
