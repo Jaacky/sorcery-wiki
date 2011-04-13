@@ -1,4 +1,4 @@
-**NOTE: 'redirect_back_or_to' used to be 'return_to_or_redirect' in v0.3.0 and before.**
+**NOTE: 'redirect_back_or_to' used to be 'return_or_redirect_to' in v0.3.0 and before.**
 
 In this tutorial we will generate a new Rails 3 app and add sorcery as the authentication engine.
 At the end of the tutorial we will be able to register a user, and then login and logout with a username and a password.
