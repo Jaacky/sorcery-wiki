@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1
+
+Renamed "oauth" module to "external" and made API prettier.
+```
+auth_at_provider(provider) => login_at(provider)
+login_from_access_token(provider) => login_from(provider)
+create_from_provider!(provider) => create_from(provider)
+```
+
 ## 0.3.0
 
 Added Sinatra support!
