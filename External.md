@@ -1,15 +1,17 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use it! Tutorial was updated for v0.2.1**
+**API was changed in v0.3.1, please see [[changelog]]**
+
+**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use the latest gem! This tutorial is updated for v0.3.1**
 
 First Add some db fields:
 ```
-    rails g sorcery_migration oauth
+    rails g sorcery_migration external
 ```
 
 Which will create:
 ```ruby
-    class SorceryOauth < ActiveRecord::Migration
+    class SorceryExternal < ActiveRecord::Migration
       def self.up
         create_table :authentications do |t|
           t.integer :user_id, :null => false
@@ -31,7 +33,7 @@ Which will create:
 Let's add the submodule too:
 ```ruby
     # config/application.rb
-    config.sorcery.submodules = [:oauth, blabla, blablu, ...]
+    config.sorcery.submodules = [:external, blabla, blablu, ...]
 ```
 
 Now we need to associate User with Authentication:
@@ -72,16 +74,16 @@ We'll need a controller to handle the authentications:
       # sends the user on a trip to the provider,
       # and after authorizing there back to the callback url.
       def oauth
-        auth_at_provider(params[:provider])
+        login_at(params[:provider])
       end
       
       def callback
         provider = params[:provider]
-        if @user = login_from_access_token(provider)
+        if @user = login_from(provider)
           redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
         else
           begin
-            @user = create_from_provider!(provider)
+            @user = create_from(provider)
             # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
 
             reset_session # protect from session fixation attack
@@ -109,7 +111,7 @@ We've got the plumbing installed, but no specific Twitter/Facebook configuration
     # app/controllers/application_controller.rb
     activate_sorcery! do |config|
       ...
-      config.oauth_providers = [:twitter, :facebook]
+      config.external_providers = [:twitter, :facebook]
       
       config.twitter.key = "<your key here>"
       config.twitter.secret = "<your key here>"
