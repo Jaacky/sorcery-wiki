@@ -45,7 +45,7 @@ Rails 3 Tutorials:
 
 [[Brute Force Protection]]
 
-[[OAuth]]
+[[External]]
 
 Sinatra Tutorials:
 
