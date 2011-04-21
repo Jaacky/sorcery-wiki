@@ -13,9 +13,9 @@ I'm using rvm so i'll first create a separate gemset:
 ```
 
 
-Now I'll get rails:
+Now I'll get rails and bundler:
 ```
-    gem install rails mysql2
+    gem install rails mysql2 bundler
 ```
 
 
@@ -27,7 +27,16 @@ Now I'll create a new app with mysql database:
 ```
 
 
-We'll start by adding the User resource so that we'll be able to register new users:
+At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'.
+Then we'll run:
+```
+    rake sorcery:bootstrap
+```
+
+To create an initializer with the default configuration for sorcery.
+This will actually only be useful in the next tutorials, as the default config is good for this one.
+
+We'll start building the app by adding the User resource so that we'll be able to register new users:
 ```
     rails g scaffold User username:string email:string crypted_password:string salt:string
     rake db:migrate
