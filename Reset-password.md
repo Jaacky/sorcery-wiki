@@ -21,9 +21,14 @@ Which will create:
       end
     end
 ```
-    rake db:migrate
 
-And a mailer with one action:
+
+And then:
+```
+    rake db:migrate
+```
+
+Add a mailer with one action:
     rails g mailer UserMailer reset_password_email
 
 We need to edit the mailer and add a 'user' parameter to the action because sorcery will send it the new user as a parameter:
