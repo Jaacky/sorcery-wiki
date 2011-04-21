@@ -29,8 +29,8 @@ Which will create:
 
 And add the submodule:
 ```ruby
-    # config/application.rb
-    config.sorcery.submodules = [:activity_logging, blabla, blublu, ...]
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.submodules = [:activity_logging, blabla, blublu, ...]
 ```
 
 That's it, you have activity logging on! All recent activity times will be logged for each user.
