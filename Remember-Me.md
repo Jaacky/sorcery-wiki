@@ -1,9 +1,11 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First add the remember_me submodule:
+```
+rake sorcery
 ```ruby
-    # config/application.rb
-    config.sorcery.submodules = [:remember_me, blabla, blablu, ...]
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.submodules = [:remember_me, blabla, blablu, ...]
 ```
 
 Now you'll need some new db fields so add a migration that looks like this:
