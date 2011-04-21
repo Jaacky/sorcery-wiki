@@ -71,7 +71,7 @@ We need to let the User model know it is using sorcery. We do that like this:
     # app/models/user.rb
     class User < ActiveRecord::Base
       attr_accessible :email, :password, :password_confirmation
-      activate_sorcery!
+      authenticates_with_sorcery!
 
       validates_confirmation_of :password, :on => :create, :message => "should match confirmation"
     end
