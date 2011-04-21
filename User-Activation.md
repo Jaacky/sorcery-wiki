@@ -50,15 +50,20 @@ We need to edit the mailer and add a 'user' parameter to each action because sor
 
 Then add the user_activation submodule:
 ```ruby
-    # config/application.rb
-    config.sorcery.submodules = [:user_activation, blabla, blablu, ...]
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.submodules = [:user_activation, blabla, blablu, ...]
 ```
 
-And activate the User model with our mailer defined:
+And configure the User model with our mailer defined:
 ```ruby
-    # app/models/user.rb
-    activate_sorcery! do |config|
-      config.user_activation_mailer = UserMailer
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.configure do |config|
+      ...
+      config.user_config do |user|
+        ...
+        user.user_activation_mailer = UserMailer
+        ...
+      end
     end
 ```
 
