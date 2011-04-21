@@ -1,8 +1,8 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-**API was changed in v0.3.1, please see [[changelog]]**
+**API was changed in v0.3.1 and configuration file changed in v0.4.0, please see [[changelog]]**
 
-**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use the latest gem! This tutorial is updated for v0.3.1**
+**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use the latest gem! This tutorial is updated for v0.4.0**
 
 First Add some db fields:
 ```
@@ -30,11 +30,33 @@ Which will create:
     rake db:migrate
 ```
 
-Let's add the submodule too:
+Let's add the submodule and configuration:
 ```ruby
-    # config/application.rb
-    config.sorcery.submodules = [:external, blabla, blablu, ...]
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.submodules = [:external, blabla, blablu, ...]
+
+    Rails.application.config.sorcery.configure do |config|
+      ...
+      config.external_providers = [:twitter, :facebook]
+      
+      config.twitter.key = "<your key here>"
+      config.twitter.secret = "<your key here>"
+      config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
+      config.twitter.user_info_mapping = {:username => "screen_name"}
+      
+      config.facebook.key = "<your key here>"
+      config.facebook.secret = "<your key here>"
+      config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+      config.facebook.user_info_mapping = {:username => "name"}
+      ...
+    end
 ```
+
+You will need to register your app with Twitter/Facebook to get your keys of course.
+
+
+The 'user_info_mapping' takes care of converting the user info from the provider (Twitter/Facebook) into the attributes that your user has, in this case we only used it to have a username.
+
 
 Now we need to associate User with Authentication:
 ```ruby
@@ -105,28 +127,6 @@ Let's add routes for this controller:
     end
     match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 ```
-
-We've got the plumbing installed, but no specific Twitter/Facebook configuration, so let's add the meat:
-```ruby
-    # app/controllers/application_controller.rb
-    activate_sorcery! do |config|
-      ...
-      config.external_providers = [:twitter, :facebook]
-      
-      config.twitter.key = "<your key here>"
-      config.twitter.secret = "<your key here>"
-      config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-      config.twitter.user_info_mapping = {:username => "screen_name"}
-      
-      config.facebook.key = "<your key here>"
-      config.facebook.secret = "<your key here>"
-      config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-      config.facebook.user_info_mapping = {:username => "name"}
-    end
-```
-You will need to register your app with Twitter/Facebook to get your keys of course.
-
-The 'user_info_mapping' takes care of converting the user info from the provider (Twitter/Facebook) into the attributes that your user has, in this case we only used it to have a username.
 
 Basically how this works is like this:
 The user asks to login using a provider. We send the user to authorize at the provider's site, and he is then redirected back. If he doesn't exist in our db, he is auto-created and logged in. If he already exists in our db, he just gets logged in.
