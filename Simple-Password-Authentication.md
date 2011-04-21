@@ -1,4 +1,6 @@
 **NOTE: 'authenticates_with_sorcery' used to be 'activate_sorcery!' in v0.3.1 and before.**
+
+
 **NOTE: 'redirect_back_or_to' used to be 'return_or_redirect_to' in v0.3.0 and before.**
 
 In this tutorial we will generate a new Rails 3 app and add sorcery as the authentication engine.
