@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.0
+
+Changed the way Sorcery is configured.
+Now inside the model only add:
+
+```
+authenticates_with_sorcery!
+```
+
+In the controller no code is needed! All configuration is done in an initializer.
+Added a rake task to create it.
+
+```
+rake sorcery:bootstrap
+```
+
 ## 0.3.1
 
 Renamed "oauth" module to "external" and made API prettier.
