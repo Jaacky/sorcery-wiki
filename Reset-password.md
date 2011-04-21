@@ -33,10 +33,16 @@ We need to edit the mailer and add a 'user' parameter to the action because sorc
     ...
 ```
 
-Then add the reset_password submodule:
+Then add the reset_password submodule, and define what mailer to use:
 ```ruby
-    # config/application.rb
-    config.sorcery.submodules = [:reset_password, blabla, blablu, ...]
+    # config/initializers/sorcery.rb
+    Rails.application.config.sorcery.submodules = [:reset_password, blabla, blablu, ...]
+
+    Rails.application.config.sorcery.configure do |config|
+      config.user_config do |user|
+        user.reset_password_mailer = UserMailer
+      end
+    end
 ```
 
 We need a controller to handle all the password action:
@@ -105,14 +111,6 @@ Add the rest:
       @url  = "http://0.0.0.0:3000/password_resets/#{user.reset_password_token}/edit"
       mail(:to => user.email,
            :subject => "Your password has been reset")
-    end
-```
-
-We'll need to tell sorcery what mailer we use:
-```ruby
-    # app/models/user.rb
-    activate_sorcery! do |config|
-      config.reset_password_mailer = UserMailer
     end
 ```
 
