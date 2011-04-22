@@ -1,3 +1,8 @@
+**Rubies** - Sorcery was tested on ruby 1.9.2 and should be fully compatible with it.
+Other rubies were not yet tested, though they might be in the future.
+
+**Rails** - Rails 3+ is supported. There are currently no plans to support Rails 2.
+
 **Single Table Inheritance** - This ActiveRecord feature doesn't play nice with Sorcery out of the box, but there is a hack that seems to work, and will probably get into a future release.
 
 What we want to do is copy the configuration of User into its subclasses. This doesn't happen by default because @sorcery_config is attached to the User singleton object.
