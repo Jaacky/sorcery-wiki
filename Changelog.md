@@ -2,11 +2,11 @@
 
 ## 0.4.2
 
-Added test helpers for Sinatra
+Added test helpers for Rails 3 & Sinatra.
 
 ## 0.4.1
 
-Added test helpers for Rails 3
+Fixing Rails app name in initializer.
 
 ## 0.4.0
 
