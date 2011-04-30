@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.2
+
+Added test helpers for Sinatra
+
+## 0.4.1
+
+Added test helpers for Rails 3
+
 ## 0.4.0
 
 Changed the way Sorcery is configured.
