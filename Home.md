@@ -53,4 +53,6 @@ Sinatra Tutorials:
 
 Testing Tutorials:
 
-Testing helpers for Test::Unit and RSpec are under construction.
+[[Testing Rails 3]]
+
+[[Testing Sinatra]]
