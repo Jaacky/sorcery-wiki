@@ -6,7 +6,6 @@ noam:
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
   activation_state: active
-  type: User
 ```
 
 
