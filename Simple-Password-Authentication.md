@@ -74,9 +74,11 @@ The virtual attributes will be added via 'validates_confirmation_of' as seen bel
 ```
 
 It's time to add Sorcery in, so we'll get a crypted password when registering a user.
+```ruby
     # Gemfile
     gem 'sorcery'
     bundle install
+```
 
 We need to let the User model know it is using sorcery. We do that like this:
 ```ruby
