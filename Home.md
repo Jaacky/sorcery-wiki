@@ -27,6 +27,8 @@ Hopefully, I've achieved this. If not, let me know.
 
 You can see how controllers, models, migrations and views can be used in Rails 3 with Sorcery by checking out [this example application](https://github.com/NoamB/sorcery-example-app).
 
+**There is also a mongoid branch at the same URL, showing how you can use Mongoid as your ORM.**
+
 Rails 3 Tutorials:
 
 [[Simple Password Authentication]]
