@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+Added support for Mongoid!
+
+'reset_password!(:password => new_password)' changed into 'change_password!(new_password)'
+
 ## 0.4.2
 
 Added test helpers for Rails 3 & Sinatra.
