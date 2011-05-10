@@ -1,5 +1,7 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
+** Note: 'reset_password!(:password => "secret")' changed into 'change_password!(new_password)' in v0.5.0 **
+
 First Add some db fields:
 ```
     rails g sorcery_migration reset_password
@@ -84,7 +86,7 @@ Make it look like this:
         @user = User.load_from_reset_password_token(params[:token])
         not_authenticated if !@user
         # the next line clears the temporary token and updates the password
-        if @user.reset_password!(params[:user])
+        if @user.change_password!(params[:user][:password])
           redirect_to(root_path, :notice => 'Password was successfully updated.')
         else
           render :action => "edit"
