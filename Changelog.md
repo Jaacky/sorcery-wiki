@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+Fixed bug in reset_password - after reset can't login due to bad salt creation. Affected only Mongoid.
+
 ## 0.5.0
 
 Added support for Mongoid! (still buggy and not recommended for serious use)
