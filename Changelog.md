@@ -2,7 +2,7 @@
 
 ## 0.5.0
 
-Added support for Mongoid!
+Added support for Mongoid! (still buggy and not recommended for serious use)
 
 'reset_password!(:password => new_password)' changed into 'change_password!(new_password)'
 
