@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+Fixed #3 and #4 - Modular Sinatra apps work now, and User model isn't cached in development mode.
+
 ## 0.5.1
 
 Fixed bug in reset_password - after reset can't login due to bad salt creation. Affected only Mongoid.
