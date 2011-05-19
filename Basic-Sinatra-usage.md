@@ -1,3 +1,5 @@
+**Sorcery supports both classic style AND modular style since v0.5.2**
+
 First we'll require sinatra and enable sessions:
 ```ruby
     # myapp.rb
