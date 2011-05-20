@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.21
+
+Fixed typo in initializer - MUST be "config.user_class = User"
+
 ## 0.5.2
 
 Fixed #3 and #4 - Modular Sinatra apps work now, and User model isn't cached in development mode.
