@@ -53,7 +53,7 @@ Then add the reset_password submodule, and define what mailer to use:
 ```
 
 We need a controller to handle all the password action:
-    rails g resource PasswordResets create edit update
+    rails g controller PasswordResets create edit update
 
 Make it look like this:
 ```ruby
