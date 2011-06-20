@@ -30,13 +30,6 @@ Now I'll create a new app with mysql database:
 
 
 At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'.
-Then we'll run:
-```
-    rake sorcery:bootstrap
-```
-
-To create an initializer with the default configuration for sorcery.
-This will actually only be useful in the next tutorials, as the default config is good for this one.
 
 We'll start building the app by adding the User resource so that we'll be able to register new users:
 ```
