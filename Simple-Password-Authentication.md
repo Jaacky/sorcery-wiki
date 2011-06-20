@@ -34,7 +34,7 @@ At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'.
 We'll start building the app by adding the User resource so that we'll be able to register new users:
 ```
     rails g scaffold User username:string email:string crypted_password:string salt:string
-    rake db:migrate
+    rake db:create; rake db:migrate
 ```
 
 
