@@ -24,6 +24,7 @@ Now I'll create a new app with mysql database:
 ```
     rails new tutorial -d mysql
     cd tutorial
+    bundle install
     rake db:create
 ```
 
