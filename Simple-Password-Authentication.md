@@ -84,7 +84,10 @@ Voila! The password was automatically encrypted, and a salt was also auto-create
 By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
 
 Now we need a way to login after registering.
+
+```
     rails g controller UserSessions new create destroy
+```
 
 Make it look like this:
 ```ruby
