@@ -37,12 +37,10 @@ We'll start building the app by adding the User resource so that we'll be able t
     rake db:create; rake db:migrate
 ```
 
-
-There is also a generator for migrations which you can use if your app doesn't need the whole scaffold. To generate the basic User migration use it like so:
+Now that we have our User class built, we can run the following to create an initializer with the default configuration for sorcery:
 ```
-    rails g sorcery_migration core
+  rake sorcery:bootstrap
 ```
-
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
