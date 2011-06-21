@@ -36,6 +36,13 @@ We'll start building the app by adding the User resource so that we'll be able t
     rails g scaffold User username:string email:string crypted_password:string salt:string
     rake db:create; rake db:migrate
 ```
+That generates our User class for us, as well as the controllers/views to manipulate it.
+
+NOTE: If you do not need a full scaffold, you can just generate the migration.  **If you're just following along with this guide using it as a tutorial, please skip the next step.**
+
+```
+    rails g sorcery_migration core
+```
 
 Now that we have our User class built, we can run the following to create an initializer with the default configuration for sorcery:
 ```
