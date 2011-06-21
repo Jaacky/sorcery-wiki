@@ -63,17 +63,7 @@ We'll need to add a password 'virtual' field instead, that will hold the passwor
     </div>
 ```
 
-The virtual attributes will be added via 'validates_confirmation_of' as seen below. You may also want to allow the user to change only some of his attributes like so:
-```ruby
-    # app/models/user.rb
-    class User < ActiveRecord::Base
-      attr_accessible :email, :password, :password_confirmation
-  
-      validates_confirmation_of :password, :on => :create, :message => "should match confirmation"
-    end
-```
-
-We need to let the User model know it is using sorcery. We do that like this:
+The virtual attributes will be added via 'validates_confirmation_of' as seen below. You may also want to allow the user to change only some of his attributes. Also we need to let the User model know it is using sorcery. We do that like this:
 ```ruby
     # app/models/user.rb
     class User < ActiveRecord::Base
