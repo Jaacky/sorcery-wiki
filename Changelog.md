@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.3
+
+Fixed #9
+Fixed hardcoded method names in remember_me submodule.
+Improved specs.
+
 ## 0.5.21
 
 Fixed typo in initializer - MUST be "config.user_class = User"
