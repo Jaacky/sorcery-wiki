@@ -4,3 +4,5 @@ That includes specs for all of Sorcery supported platforms and ORMs (Rails 3, Si
 The ActiveRecord specs expect a local MySQL server present at the default port.
 
 The Mongoid specs expect a local Mongoid server present at the default port.
+
+You may need to run 'bundle' in every folder under 'spec' that includes a Gemfile.
