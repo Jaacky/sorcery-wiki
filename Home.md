@@ -58,3 +58,7 @@ Testing Tutorials:
 [[Testing Rails 3]]
 
 [[Testing Sinatra]]
+
+Developer Tutorials:
+
+[[Running the specs]]
