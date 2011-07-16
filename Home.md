@@ -31,23 +31,11 @@ You can see how controllers, models, migrations and views can be used in Rails 3
 
 Rails 3 Tutorials:
 
-[[Simple Password Authentication]]
+[[Simple Password Authentication]] | [[Remember Me]] | [[Session Timeout]]
 
-[[Remember Me]]
+[[User Activation]] | [[HTTP Basic Auth]] | [[Reset Password]]
 
-[[Session Timeout]]
-
-[[User Activation]]
-
-[[HTTP Basic Auth]]
-
-[[Reset Password]]
-
-[[Activity Logging]]
-
-[[Brute Force Protection]]
-
-[[External]]
+[[Activity Logging]] | [[Brute Force Protection]] | [[External]]
 
 Sinatra Tutorials:
 
@@ -55,9 +43,7 @@ Sinatra Tutorials:
 
 Testing Tutorials:
 
-[[Testing Rails 3]]
-
-[[Testing Sinatra]]
+[[Testing Rails 3]] | [[Testing Sinatra]]
 
 Developer Tutorials:
 
