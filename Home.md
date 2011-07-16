@@ -47,4 +47,4 @@ Testing Tutorials:
 
 Developer Tutorials:
 
-[[Running the specs]]
+[[Running the specs]] | [[Under the hood - overall design]]
