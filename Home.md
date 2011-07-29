@@ -4,7 +4,7 @@ This wiki is a work in progress, and constantly improving.
 
 [[Changelog]]
 
-[[Known incompatabilities]]
+[[Known incompatibilities]]
 
 
 ### Summary:
