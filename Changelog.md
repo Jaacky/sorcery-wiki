@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+Fixes issues with external user_hash not including some fields, and an issue with User model not loaded when user_class is called. Now config.user_class should be a string or a symbol.
+
+Improved specs.
+
 ## 0.5.3
 
 Fixed #9
