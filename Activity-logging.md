@@ -1,12 +1,14 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 Let's add the db stuff first:
+
 ```
     rails g sorcery_migration activity_logging
 ```
 
 
 Which will create:
+
 ```ruby
     class SorceryActivityLogging < ActiveRecord::Migration
       def self.up
@@ -28,6 +30,7 @@ Which will create:
 ```
 
 And add the submodule:
+
 ```ruby
     # config/initializers/sorcery.rb
     Rails.application.config.sorcery.submodules = [:activity_logging, blabla, blublu, ...]
@@ -36,6 +39,7 @@ And add the submodule:
 That's it, you have activity logging on! All recent activity times will be logged for each user.
 
 Now for the fun stuff - Let's say you want to display on your site the usernames of the users currently logged in:
+
 ```ruby
     # app/controllers/application_controller.rb
     ...
@@ -46,7 +50,8 @@ Now for the fun stuff - Let's say you want to display on your site the usernames
     end
     ...
 ```
-```ruby
+
+```rhtml
     # app/views/layouts/application.html.erb
     ...
     <% if current_user %>
