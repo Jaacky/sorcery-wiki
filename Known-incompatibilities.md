@@ -8,6 +8,7 @@ Other rubies were not yet tested, though they might be in the future.
 What we want to do is copy the configuration of User into its subclasses. This doesn't happen by default because @sorcery_config is attached to the User singleton object.
 
 The solution is this:
+
 ```ruby
 class User < ActiveRecord::Base
   ...
