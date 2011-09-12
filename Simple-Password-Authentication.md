@@ -84,6 +84,7 @@ Now we need a way to login after registering.
 
 
 Make it look like this:
+
 ```ruby
 # app/controllers/user_sessions_controller.rb
 class UserSessionsController < ApplicationController
@@ -204,6 +205,7 @@ skip_before_filter :require_login, :except => [:destroy]
 
 The default controller code redirects you to "show" action after "create" completes.
 This means when you register a user, you will be redirected to a protected action, so let's fix it by redirecting to the users index action:
+
 ```ruby
 # app/controllers/users_controller.rb
 ...
