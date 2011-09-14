@@ -3,7 +3,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 First add the remember_me submodule:
 
 ```
-rake sorcery
+rake sorcery:bootstrap
 ```
 
 ```ruby
