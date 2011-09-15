@@ -63,7 +63,7 @@ Now we need to associate User with Authentication:
 # app/models/user.rb
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :authentications_attributes
-  activate_sorcery! do |config|
+  authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
 
