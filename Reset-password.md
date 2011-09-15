@@ -89,6 +89,10 @@ class PasswordResetsController < ApplicationController
   def update
     @user = User.load_from_reset_password_token(params[:token])
     not_authenticated if !@user
+
+    # TODO: validate that params[:user][:password] == params[:user][:password_confirmation]
+    # if not, send an error to the user to correct it
+
     # the next line clears the temporary token and updates the password
     if @user.change_password!(params[:user][:password])
       redirect_to(root_path, :notice => 'Password was successfully updated.')
@@ -106,7 +110,7 @@ Add the rest:
 resources :password_resets
 ```
 
-```ruby
+```rhtml
 # app/views/user_mailer/reset_password.text.erb
 Hello, <%= @user.email %>
 ===============================================
@@ -130,7 +134,7 @@ end
 
 Now we need some work on the reset password views:
 
-```ruby
+```rhtml
 # app/views/password_resets/_form.html.erb
 <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
   <% if @user.errors.any? %>
@@ -166,14 +170,14 @@ Now we need some work on the reset password views:
 
 I like to put the "forgot password?" form in the same page as the login form:
 
-```ruby
+```rhtml
 # app/views/user_sessions/new.html.erb
 ...
 <h1>Forgot Password?</h1>
 <%= render 'forgot_password_form' %>
 ```
 
-```ruby
+```rhtml
 # app/views/user_sessions/_forgot_password_form.html.erb
 <%= form_tag password_resets_path, :method => :post do %>
   <div class="field">
