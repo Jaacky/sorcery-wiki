@@ -187,4 +187,10 @@ I like to put the "forgot password?" form in the same page as the login form:
 <% end %>
 ```
 
+```rhtml
+# app/views/password_resets/edit.html.erb
+<h1>Choose a new password</h1>
+<%= render 'form' %>
+```
+
 So now in the login form a user can put his email in the 'forgot password' form, get instructions to his email with a link. With that link, we get to a form where the user can enter a new password, and from there he is set.
