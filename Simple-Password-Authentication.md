@@ -49,7 +49,7 @@ Now that we have our User class built, we can run the following to create an ini
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
 
-```ruby
+```rhtml
 # app/views/users/_form.html.erb
 <div class="field">
    <%= f.label :password %><br />
@@ -116,7 +116,7 @@ end
 
 Let's create the login form:
 
-```ruby
+```rhtml
 # app/views/user_sessions/new.html.erb
 <h1>Login</h1>
 
@@ -125,7 +125,7 @@ Let's create the login form:
 <%= link_to 'Back', user_sessions_path %>
 ```
 
-```ruby
+```rhtml
 # app/views/user_sessions/_form.html.erb
 <%= form_tag user_sessions_path, :method => :post do %>
   <div class="field">
@@ -156,7 +156,7 @@ match 'logout' => 'user_sessions#destroy', :as => :logout
 
 One Last thing, we need some navigation links, and a way to display flash messages:
 
-```ruby
+```rhtml
 # app/views/layouts/application.html.erb
 <!DOCTYPE html>
 <html>
