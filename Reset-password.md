@@ -87,7 +87,7 @@ class PasswordResetsController < ApplicationController
       
   # This action fires when the user has sent the reset password form.
   def update
-    @user = User.load_from_reset_password_token(params[:token])
+    @user = User.load_from_reset_password_token(params[:id])
     not_authenticated if !@user
 
     # TODO: validate that params[:user][:password] == params[:user][:password_confirmation]
