@@ -69,14 +69,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   authenticates_with_sorcery!
 
-  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password_set?
-  validates_confirmation_of :password, :message => "should match confirmation", :if => :password_set?
-
-  # this method will make sure we only trigger the validations on registration or password reset
-  # or any other event which asks the user to fill his password.
-  def password_set?
-    @password
-  end
+  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
+  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
 end
 ```
 
