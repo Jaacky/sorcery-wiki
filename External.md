@@ -30,6 +30,10 @@ end
 
     rake db:migrate
 
+And generate the model Authentication without migration:
+
+    rails g model Authentication --migration=false
+
 Let's add the submodule and configuration:
 
 ```ruby
