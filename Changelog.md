@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.7.0
+
+* Many bugfixes
+* Added default SSL certificate for oauth2
+* Added multi-username ability
+* Security fixes (CSRF, cookie digesting)
+* Added auto_login(user) to the API
+* Updated gem versions of oauth(1/2)
+* Added logged_in? as a view helper
+* Github provider added to external submodule
+
+
 ## 0.6.1
 
 Gemfile versions updated due to public demand.
