@@ -163,9 +163,9 @@ One Last thing, we need some navigation links, and a way to display flash messag
 <html>
   <head>
     <title>Tutorial</title>
-      <%= stylesheet_link_tag :all %>
-      <%= javascript_include_tag :defaults %>
-      <%= csrf_meta_tag %>
+      <%= stylesheet_link_tag    "application" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
   </head>
   <body>
     
