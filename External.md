@@ -143,7 +143,7 @@ Let's add routes for this controller:
 
 ```ruby
 # config/routes.rb
-resource :oauth do
+resource :oauths do
   get :callback
 end
 match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
