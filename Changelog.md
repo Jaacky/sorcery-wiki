@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.2
+
+* Fixed a bug in the new generator
+
+
 ## 0.7.1
 
 * Many bugfixes
