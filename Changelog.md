@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.1
+
+* Many bugfixes
+* MongoMapper added to supported ORMs list, thanks @kbighorse
+* Sinatra support discontinued!
+* New generator contributed by @ahazem
+* Cookie domain setting contributed by @Highcode
+
+
 ## 0.7.0
 
 * Many bugfixes
