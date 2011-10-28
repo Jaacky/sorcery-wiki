@@ -4,13 +4,19 @@ After checking out the gem, I usually start by creating a gemset with rvm:
     rvm use 1.9.2@sorcery --create
 ```
 
-Then I install bundler and jeweler
+Then I install bundler
 
 ```
-    gem install bundler jeweler
+    gem install bundler
 ```
 
-Then you have a few important rake tasks at your disposal:
+Then run
+
+```
+    bundle install
+```
+
+Now you have a few important rake tasks at your disposal:
 
 rake bundle - will run 'bundle install' recursively on all subfolders which have a Gemfile.
 
