@@ -1,8 +1,24 @@
+After checking out the gem, I usually start by creating a gemset with rvm:
+
+```
+    rvm use 1.8.7@sorcery --create
+```
+
+Then I install bundler
+
+```
+    gem install bundler
+```
+
+Then you have a few important rake tasks at your disposal:
+
+rake bundle - will run 'bundle install' recursively on all subfolders which have a Gemfile.
+
+rake bundle_update - will run 'bundle update' recursively.
+
 The default 'rake' task from the gem root folder runs all specs.
-That includes specs for all of Sorcery supported platforms and ORMs (Rails 3, Sinatra, ActiveRecord, Mongoid, Sinatra Modular style etc.).
+That includes specs for all of Sorcery supported platforms and ORMs (Rails 3, ActiveRecord, Mongoid, MongoMapper etc.).
 
 The ActiveRecord specs expect a local MySQL server present at the default port.
 
-The Mongoid specs expect a local Mongoid server present at the default port.
-
-You may need to run 'bundle' in every folder under 'spec' that includes a Gemfile.
+The Mongoid/MongoMapper specs expect a local Mongoid server present at the default port.
