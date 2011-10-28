@@ -1,7 +1,7 @@
 After checking out the gem, I usually start by creating a gemset with rvm:
 
 ```
-    rvm use 1.8.7@sorcery --create
+    rvm use 1.9.2@sorcery --create
 ```
 
 Then I install bundler
