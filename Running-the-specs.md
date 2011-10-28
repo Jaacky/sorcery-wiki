@@ -4,10 +4,10 @@ After checking out the gem, I usually start by creating a gemset with rvm:
     rvm use 1.9.2@sorcery --create
 ```
 
-Then I install bundler
+Then I install bundler and jeweler
 
 ```
-    gem install bundler
+    gem install bundler jeweler
 ```
 
 Then you have a few important rake tasks at your disposal:
