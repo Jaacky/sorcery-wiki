@@ -18,11 +18,11 @@ Then run
 
 Now you have a few important rake tasks at your disposal:
 
-rake bundle - will run 'bundle install' recursively on all subfolders which have a Gemfile.
+`rake bundle` - will run 'bundle install' recursively on all subfolders which have a Gemfile.
 
-rake bundle_update - will run 'bundle update' recursively.
+`rake bundle_update` - will run 'bundle update' recursively.
 
-The default 'rake' task from the gem root folder runs all specs.
+The default `rake` task from the gem root folder runs all specs.
 That includes specs for all of Sorcery supported platforms and ORMs (Rails 3, ActiveRecord, Mongoid, MongoMapper etc.).
 
 The ActiveRecord specs expect a local MySQL server present at the default port.
