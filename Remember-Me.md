@@ -1,8 +1,8 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-First add the remember_me submodule:
+First run the generator below, or include the code yourself:
+    rails g sorcery:install remember_me
 
-    rake sorcery:bootstrap
 
 ```ruby
 # config/initializers/sorcery.rb
@@ -29,9 +29,7 @@ class AddRememberMeTokenToUsers < ActiveRecord::Migration
 end
 ```
 
-There is now actually a generator for this:
 
-    rails g sorcery_migration remember_me
 
 And then run
 
