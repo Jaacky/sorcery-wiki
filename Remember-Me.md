@@ -1,6 +1,7 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First run the generator below, or include the code yourself:
+
     rails g sorcery:install remember_me
 
 
