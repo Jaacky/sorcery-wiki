@@ -44,7 +44,7 @@ NOTE: If you do not need a full scaffold, you can just generate the migration.  
 
 Now that we have our User class built, we can run the following to create an initializer with the default configuration for sorcery:
 
-  rake sorcery:bootstrap
+  rails generate sorcery:install
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
