@@ -3,7 +3,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 First add some db fields:
 
 ```
-rails g sorcery_migration user_activation
+rails g sorcery:install user_activation  --migrations
 ```
 
 
