@@ -3,7 +3,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 Let's add the db stuff first:
 
 ```
-    rails g sorcery_migration activity_logging
+    rails g sorcery:install activity_logging  --migrations
 ```
 
 
@@ -27,6 +27,12 @@ Which will create:
         remove_column :users, :last_login_at
       end
     end
+```
+
+run the migration
+
+```
+    rake db:migrate
 ```
 
 And add the submodule:
