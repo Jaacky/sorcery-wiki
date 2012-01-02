@@ -74,11 +74,11 @@ class User < ActiveRecord::Base
 end
 ```
 
-Now run the app and create a new user. 
+Now run the app and create a new user at [http://0.0.0.0:3000/users](http://0.0.0.0:3000/users). 
 Voila! The password was automatically encrypted, and a salt was also auto-created!
 By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
 
-Now we need a way to login after registering.
+Now we need a way to login after registering, so we'll generate a controller for that:
 
 
     rails g controller UserSessions new create destroy
