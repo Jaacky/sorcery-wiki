@@ -30,17 +30,19 @@ At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'.
 
 We'll start building the app by running this generator added by sorcery:
 
-  rails g sorcery:install
+    rails g sorcery:install
+
+
 
 It will create the initializer file, the User model, unit test stubs, and the default migration, which we want to run now:
 
-  rake db:migrate
+    rake db:migrate
 
 
 
 To get some views and controllers fast, we'll run rails scaffold generator, and skip the files we already created (we'll need to delete the new migration manually though):
 
-  rails g scaffold User username:string email:string crypted_password:string salt:string --skip-migrations
+    rails g scaffold User username:string email:string crypted_password:string salt:string
 
 
 
