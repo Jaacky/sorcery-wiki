@@ -8,9 +8,7 @@ At the end of the tutorial we will be able to register a user, and then login an
 
 I'm using rvm so i'll first create a separate gemset (assumes 1.9.2 is installed):
 
-    rvm use 1.9.2
-    rvm gemset create tutorial
-    rvm use 1.9.2@tutorial
+    rvm use 1.9.2@tutorial --create
 
 
 
@@ -20,31 +18,31 @@ Now I'll get rails and bundler:
 
 
 
-Now I'll create a new app with mysql database:
+Now I'll create a new app using mysql as the database (make sure mysql is running!):
 
     rails new tutorial -d mysql
     cd tutorial
-    bundle install
     rake db:create
 
 
 
 At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'.
 
-We'll start building the app by adding the User resource so that we'll be able to register new users:
+We'll start building the app by running this generator added by sorcery:
 
-    rails g scaffold User username:string email:string crypted_password:string salt:string
-    rake db:create; rake db:migrate
+  rails g sorcery:install
 
-That generates our User class for us, as well as the controllers/views to manipulate it.
+It will create the initializer file, the User model, unit test stubs, and the default migration, which we want to run now:
 
-NOTE: If you do not need a full scaffold, you can just generate the migration.  **If you're just following along with this guide using it as a tutorial, please skip the next step.**
+  rake db:migrate
 
-    rails g sorcery_migration core
 
-Now that we have our User class built, we can run the following to create an initializer with the default configuration for sorcery:
 
-  rails generate sorcery:install
+To get some views and controllers fast, we'll run rails scaffold generator, and skip the files we already created (we'll need to delete the new migration manually though):
+
+  rails g scaffold User username:string email:string crypted_password:string salt:string --skip-migrations
+
+
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
