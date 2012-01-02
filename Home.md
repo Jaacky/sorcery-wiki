@@ -13,7 +13,7 @@ This wiki is a work in progress, and constantly improving.
 Sorcery is a stripped-down, bare-bones authentication library, with which you can write your own authentication flow.
 It was built with a few goals in mind:
 
-* Less is more - less than 20 public methods to remember for the entire feature-set make the lib easy to 'get'.
+* Less is more - less than 20 public methods to remember for the entire feature-set make the library easy to 'get'.
 * No built-in or generated code - use the library's methods inside *your own* MVC structures, and don't fight to fix someone else's.
 * Magic yes, Voodoo no - the lib should be easy to hack for most developers.
 * Configuration over Confusion - Simple & short configuration as possible, not drowning in syntactic sugar.
@@ -37,14 +37,14 @@ Rails 3 Tutorials:
 
 [[Activity Logging]] | [[Brute Force Protection]] | [[External]]
 
-Sinatra Tutorials:
-
-[[Basic Sinatra Usage]]
-
 Testing Tutorials:
 
-[[Testing Rails 3]] | [[Testing Sinatra]]
+[[Testing Rails 3]] 
 
 Developer Tutorials:
 
 [[Running the specs]] | [[Under the hood - overall design]]
+
+Sinatra Tutorials (Legacy - not supported anymore):
+
+[[Basic Sinatra Usage]] | [[Testing Sinatra]]
