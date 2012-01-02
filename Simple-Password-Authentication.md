@@ -215,9 +215,9 @@ if @user.save
   ...
 ```
 
-There's only one problem. The default action of 'require_login' when blocking a logged-out user is to redirect to application root. Our root is the default Rails index.html page. Let's fix that by overriding the default behavior:
+There's only one problem. The default action of 'require_login' when blocking a logged-out user is to redirect to application root. Our root is the default Rails index.html page. Let's fix that by getting rid of the file and override the behavior:
 
-    rm public index.html
+    rm public/index.html
 
 ```ruby
 # app/controllers/application_controller.rb
