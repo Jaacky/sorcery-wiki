@@ -89,7 +89,7 @@ end
 ```
 
 ```ruby
-# app/views/user_mailer/activation_needed_email.txt.erb
+# app/views/user_mailer/activation_needed_email.text.erb
 Welcome to example.com, <%= @user.username %>
 ===============================================
      
@@ -102,7 +102,7 @@ Thanks for joining and have a great day!
 ```
 
 ```ruby
-# app/views/user_mailer/activation_success_email.txt.erb
+# app/views/user_mailer/activation_success_email.text.erb
 Congratz, <%= @user.username %>
 ===============================================
      
