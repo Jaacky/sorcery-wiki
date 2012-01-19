@@ -110,7 +110,7 @@ resources :password_resets
 ```
 
 ```rhtml
-# app/views/user_mailer/reset_password.text.erb
+# app/views/user_mailer/reset_password_email.text.erb
 Hello, <%= @user.email %>
 ===============================================
  
