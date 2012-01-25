@@ -52,7 +52,9 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = "<your key here>"
   config.facebook.secret = "<your key here>"
   config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:username => "username"}
+  config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"} #etc
+  config.facebook.scope = "email,offline_access,user_hometown,user_interests,user_likes" #etc
+  config.facebook.display = "popup"
   ...
 
   # --- user config ---
