@@ -134,7 +134,8 @@ end
 Now we need some work on the reset password views:
 
 ```rhtml
-# app/views/password_resets/_form.html.erb
+# app/views/password_resets/edit.html.erb
+<h1>Choose a new password</h1>
 <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -186,10 +187,22 @@ I like to put the "forgot password?" form in the same page as the login form:
 <% end %>
 ```
 
+Alternatively you could create a "new" view and link to it from the login page:
+
 ```rhtml
-# app/views/password_resets/edit.html.erb
-<h1>Choose a new password</h1>
-<%= render 'form' %>
+# app/views/user_sessions/new.html.erb
+...
+<%= link_to 'Forgot Password?', new_password_reset_path %>
+```
+
+```rhtml
+# app/views/password_resets/new.html.erb
+<%= form_tag password_resets_path, :method => :post do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %> <%= submit_tag "Reset my password!" %>
+  </div>
+<% end %>
 ```
 
 So now in the login form a user can put his email in the 'forgot password' form, get instructions to his email with a link. With that link, we get to a form where the user can enter a new password, and from there he is set.
