@@ -6,7 +6,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 
 First Add some db fields:
 
-    rails g sorcery_migration external
+    rails g sorcery:install external --migrations
 
 
 Which will create:
