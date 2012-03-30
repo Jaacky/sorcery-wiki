@@ -3,7 +3,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 Let's add the submodule and configuration:
 
 ```ruby
-# config/application.rb
+# config/initializers/sorcery.rb
 Rails.application.config.sorcery.submodules = [:http_basic_auth, blabla, blablu, ...]
 
 Rails.application.config.sorcery.configure do |config|
