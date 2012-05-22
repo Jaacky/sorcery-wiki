@@ -1,4 +1,4 @@
-Welcome to the Sorcery wiki!
+Welcome to the Sorcery wiki
 
 This wiki is a work in progress, and constantly improving.
 
