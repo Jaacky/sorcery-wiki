@@ -26,10 +26,12 @@ Now I'll create a new app using mysql as the database (make sure mysql is runnin
 
 
 
-At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'. In the app's Gemfile, add:
+At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'. In the app's Gemfile:
 
-    gem 'sorcery'
-
+```ruby
+# Gemfile
+gem 'sorcery'
+```
 
 
 We'll start building the app by running this generator added by sorcery:
