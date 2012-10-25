@@ -229,7 +229,7 @@ There's only one problem. The default action of 'require_login' when blocking a 
 # app/controllers/application_controller.rb
 protected
 def not_authenticated
-  redirect_to root_path, :alert => "Please login first."
+  redirect_to login_path, :alert => "Please login first."
 end
 ```
 
