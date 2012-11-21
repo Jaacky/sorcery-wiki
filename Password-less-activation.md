@@ -47,10 +47,7 @@ skip_before_filter :require_login, :only => [:index, :new, :create, :activate]
 def activate
   if (@user = User.load_from_activation_token(params[:id]))
     @user.activate!
-    password = TemporaryToken.generate_random_token
-    @user.password = password
-    @user.password_confirmation = password
-    @user.save
+    auto_login @user
   else
     not_authenticated
   end
