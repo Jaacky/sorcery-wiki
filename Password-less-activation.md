@@ -1,0 +1,1 @@
+Note: This will not work if you also using external authentication (OAuth).
