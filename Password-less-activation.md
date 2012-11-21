@@ -15,3 +15,43 @@ class User < ActiveRecord::Base
   end
 end
 ```
+
+Add a route for the confirmation to take place.
+
+```ruby
+# config/routes.rb
+resources :users do
+  member do
+    get :activate
+    put :confirm
+  end
+end
+```
+
+Add a confirmation action, and modify the activation action.
+
+```ruby
+# app/controllers/users_controller.rb
+skip_before_filter :require_login, :only => [:index, :new, :create, :activate]
+
+def activate
+  if (@user = User.load_from_activation_token(params[:id]))
+    @user.activate!
+    password = TemporaryToken.generate_random_token
+    @user.password = password
+    @user.password_confirmation = password
+    @user.save
+  else
+    not_authenticated
+  end
+end
+
+def confirmation
+  @user = User.find params[:id]
+  if @user.update_attributes(params[:user])
+    redirect_to @user, :notice => 'User was successfully activated.'
+  else
+    render :activate
+  end
+end
+```
