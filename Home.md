@@ -33,7 +33,7 @@ Rails 3 Tutorials:
 
 [[Simple Password Authentication]] | [[Remember Me]] | [[Session Timeout]]
 
-[[User Activation]] | [[HTTP Basic Auth]] | [[Reset Password]]
+[[User Activation]] | [[HTTP Basic Auth]] | [[Reset Password]] | [[Password-less Activation]]
 
 [[Activity Logging]] | [[Brute Force Protection]] | [[External]]
 
