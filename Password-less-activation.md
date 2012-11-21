@@ -13,6 +13,16 @@ class User < ActiveRecord::Base
   def external?
     false
   end
+
+
+  # change the validations to be post-activation
+  validates :password,   :presence => true, :confirmation => true, :if => :activated?
+  validates :first_name, :presence => true, :if => :activated?
+  validates :last_name,  :presence => true, :if => :activated?
+
+  def activated?
+    self.activation_state == 'active'
+  end
 end
 ```
 
@@ -54,4 +64,19 @@ def confirmation
     render :activate
   end
 end
+```
+
+Now just add the activation form (I use formtastic, but the standard form builder works fine).
+
+```haml
+# app/view/users/activate.html.haml
+%h1 Activate
+
+= semantic_form_for @user, :url => confirm_user_path(@user) do |f|
+  = f.inputs do
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :password
+    = f.input :password_confirmation
+  = f.actions :submit
 ```
