@@ -62,10 +62,10 @@ Rails.application.config.sorcery.configure do |config|
   ...
   config.user_config do |user|
     ...
-    user.remember_me_for = 1209600
+    user.remember_me_for = 1209600 # Two weeks in seconds
     ...
   end
 end
 ```
 
-There are options to configure expiration time and more. See the gem docs for a full list.
+See the gem docs for a full list of all configuration options.
