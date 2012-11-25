@@ -54,7 +54,7 @@ remember_me!
 forget_me!
 ```
 
-To configure remember me session expiration length, use this config.
+The default session length for remember me is 1 week. To change this, use the following config option. 
 
 ```ruby
 # config/initializers/sorcery.rb
@@ -62,7 +62,7 @@ Rails.application.config.sorcery.configure do |config|
   ...
   config.user_config do |user|
     ...
-    user.user_activation_mailer = UserMailer
+    user.remember_me_for = 1209600
     ...
   end
 end
