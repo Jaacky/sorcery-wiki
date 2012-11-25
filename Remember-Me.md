@@ -54,4 +54,18 @@ remember_me!
 forget_me!
 ```
 
+To configure remember me session expiration length, use this config.
+
+```ruby
+# config/initializers/sorcery.rb
+Rails.application.config.sorcery.configure do |config|
+  ...
+  config.user_config do |user|
+    ...
+    user.user_activation_mailer = UserMailer
+    ...
+  end
+end
+```
+
 There are options to configure expiration time and more. See the gem docs for a full list.
