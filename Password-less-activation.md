@@ -53,7 +53,7 @@ def activate
   end
 end
 
-def confirmation
+def confirm
   @user = User.find params[:id]
   if @user.update_attributes(params[:user])
     redirect_to @user, :notice => 'User was successfully activated.'
