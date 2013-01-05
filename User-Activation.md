@@ -2,6 +2,9 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 
 First add some db fields:
 
+### ActiveRecord
+***
+
 ```
 rails g sorcery:install user_activation  --migrations
 ```
@@ -29,9 +32,29 @@ class SorceryUserActivation < ActiveRecord::Migration
 end
 ```
 
-    rake db:migrate
+    rake db:migrate   
 
-And a mailer with two actions:
+
+### Mongoid
+***
+
+For mongoid just add these three fields to your User model :
+```ruby
+    field :activation_state,            type: String
+    field :activation_token,            type: String
+    field :activation_token_expires_at, type: DateTime
+```
+_note that the token_expires_at field is only needed if you have setup user.activation_token_expiration_period in the sorcery initializer._
+
+In addition you can add an index on the token field :
+```ruby
+    index({ activation_token: 1 }, { unique: true, background: true })
+```
+
+    rake db:mongoid:create_indexes
+<br />
+<br />
+Now our database is ready, we need a mailer with two actions:
 
     rails g mailer UserMailer activation_needed_email activation_success_email
 
