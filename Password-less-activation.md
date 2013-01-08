@@ -36,7 +36,6 @@ end
 ```
 
 Add a confirmation action, and modify the activation action.   
-You should have @user.activate! within activate, we gonna move that line to confirm so the account is only activated if the informations are given.
 
 ```ruby
 # app/controllers/users_controller.rb
@@ -44,19 +43,23 @@ skip_before_filter :require_login, :only => [:index, :new, :create, :activate, :
 
 def activate
   if (@user = User.load_from_activation_token(params[:id]))
-    # no action needed here
+    @token = params[:id]
   else
     not_authenticated
   end
 end
 
 def confirm
-  @user = User.find params[:id]
-  if @user.update_attributes(params[:user])
-    @user.activate!
-    redirect_to login_url, :notice => 'Your account is now activated.'
+  @token = params[:user][:token]
+  if @user = User.load_from_activation_token(@token)
+    if @user.update_attributes(params[:user])
+      @user.activate!
+      redirect_to login_url, :notice => 'Your account is now activated.'
+    else
+      render :activate
+    end
   else
-    render :activate
+    not_authenticated
   end
 end
 ```
@@ -65,27 +68,31 @@ Here I redirect the user to the login page, but you can let the app handle that 
 
 ```ruby
 def confirm
-  @user = User.find params[:id]
-  if @user.update_attributes(params[:user])
-    @user.activate!
-    auto_login @user
-    redirect_to @user, notice: 'Your account is now activated.'
+  @token = params[:user][:token]
+  if @user = User.load_from_activation_token(@token)
+    if @user.update_attributes(params[:user])
+      @user.activate!
+      auto_login @user
+      redirect_to @user, notice: 'Your account is now activated.'
+    else
+      render :activate
+    end
   else
-    render :activate
+    not_authenticated
   end
 end
 ```
-Now just add the activation form (I use formtastic, but the standard form builder works fine).
+Now just add the activation form (I use simple_form, but the standard form builder works fine).
 
 ```haml
 # app/view/users/activate.html.haml
 %h1 Activate
 
-= semantic_form_for @user, :url => confirm_user_path(@user) do |f|
-  = f.inputs do
-    = f.input :first_name
-    = f.input :last_name
-    = f.input :password
-    = f.input :password_confirmation
-  = f.actions :submit
+= simple_form_for @user, url: confirm_user_url(@user) do |f|
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :token, input_html: { value: @token }, as: :hidden
+  = f.submit 
 ```
