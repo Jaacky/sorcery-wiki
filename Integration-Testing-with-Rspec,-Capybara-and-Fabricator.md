@@ -27,7 +27,7 @@ end
 ```
 ### Create a user fabrication
 
-Create a user_fabrication.rb file in your `spec/fabrications` directory.
+Create a user_fabricator.rb file in your `spec/fabricators` directory.
 
 ```ruby
 Fabricator(:user, :class_name => "User") do
