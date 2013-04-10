@@ -125,7 +125,7 @@ Have a great day!
 # app/mailers/user_mailer.rb
 def reset_password_email(user)
   @user = user
-  @url  = "http://0.0.0.0:3000/password_resets/#{user.reset_password_token}/edit"
+  @url  = edit_password_reset_url(user.reset_password_token)
   mail(:to => user.email,
        :subject => "Your password has been reset")
 end
