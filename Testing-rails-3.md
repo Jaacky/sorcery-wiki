@@ -55,14 +55,6 @@ end
 In `spec/features/your_feature_spec.rb`
 
 ```ruby
-RSpec.configure do |config|
-  # ...
-  config.include AuthenticationForFeatureRequest, type: :feature
-  # ...
-end
-```
-
-```ruby
 feature 'Your Feature' do
   let(:user) { Fabricate :user }
   scenario 'Your Scenario' do
