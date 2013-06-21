@@ -3,7 +3,7 @@
 * session[:return_to_url]
 * redirect_back_or_to
 
-```
+``` ruby
 # app/controllers/oauths_controller.rb
 class OauthsController < ApplicationController
   skip_before_filter :require_login
