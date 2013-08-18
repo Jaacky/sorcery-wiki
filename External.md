@@ -43,6 +43,8 @@ Rails.application.config.sorcery.submodules = [:external, blabla, blablu, ...]
 Rails.application.config.sorcery.configure do |config|
   ...
   config.external_providers = [:twitter, :facebook]
+
+#add this file to .gitignore BEFORE putting any secret keys in here, or use a system like Figaro to abstract it!!! 
       
   config.twitter.key = "<your key here>"
   config.twitter.secret = "<your key here>"
