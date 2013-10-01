@@ -1,34 +1,9 @@
-**NOTE: 'authenticates_with_sorcery!' used to be 'activate_sorcery!' in v0.3.1 and before.**
-
-
-**NOTE: 'redirect_back_or_to' used to be 'return_or_redirect_to' in v0.3.0 and before.**
-
 **NOTE: In Rails 4, you'll need to remove the attr_accessible line in the user model and you will need to edit the user_params in the Users controller to include password and password_confirmation and not salt and crypted_password.**
 
-In this tutorial we will generate a new Rails 3 app and add sorcery as the registration/authentication engine.
+In this tutorial we will add Sorcery as the registration/authentication engine.
 At the end of the tutorial we will be able to register a user, and then login and logout with a username and a password.
 
-I'm using rvm so i'll first create a separate gemset (assumes 1.9.2 is installed):
-
-    rvm use 1.9.2@tutorial --create
-
-
-
-Now I'll get rails and bundler:
-
-    gem install rails mysql2 bundler
-
-
-
-Now I'll create a new app using mysql as the database (make sure mysql is running!):
-
-    rails new tutorial -d mysql
-    cd tutorial
-    rake db:create
-
-
-
-At this point we'll add the sorcery gem into the Gemfile, and 'bundle install'. In the app's Gemfile:
+Let's start from adding the sorcery gem into the Gemfile, and 'bundle install'. In the app's Gemfile:
 
 ```ruby
 # Gemfile
