@@ -1,6 +1,6 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-** Note: 'reset_password!(:password => "secret")' changed into 'change_password!(new_password)' in v0.5.0 **
+** Note: `reset_password!(:password => "secret")` changed into `change_password!(new_password)` in v0.5.0 **
 
 First Add some db fields:
 
@@ -10,16 +10,10 @@ Which will create:
 
 ```ruby
 class SorceryResetPassword < ActiveRecord::Migration
-  def self.up
+  def change
     add_column :users, :reset_password_token, :string, :default => nil
     add_column :users, :reset_password_token_expires_at, :datetime, :default => nil
     add_column :users, :reset_password_email_sent_at, :datetime, :default => nil
-  end
-    
-  def self.down
-    remove_column :users, :reset_password_email_sent_at
-    remove_column :users, :reset_password_token_expires_at
-    remove_column :users, :reset_password_token
   end
 end
 ```
@@ -82,14 +76,23 @@ class PasswordResetsController < ApplicationController
   def edit
     @user = User.load_from_reset_password_token(params[:id])
     @token = params[:id]
-    not_authenticated unless @user
+
+    if @user.blank?
+      not_authenticated
+      return
+    end
   end
       
   # This action fires when the user has sent the reset password form.
   def update
     @token = params[:token]
     @user = User.load_from_reset_password_token(params[:token])
-    not_authenticated and return unless @user
+
+    if @user.blank?
+      not_authenticated
+      return
+    end
+
     # the next line makes the password confirmation validation work
     @user.password_confirmation = params[:user][:password_confirmation]
     # the next line clears the temporary token and updates the password
