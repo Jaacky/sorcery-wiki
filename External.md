@@ -157,8 +157,8 @@ Let's add routes for this controller:
 
 ```ruby
 # config/routes.rb
-match "oauth/callback" => "oauths#callback"
-match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+post "oauth/callback" => "oauths#callback"
+get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 ```
 
 Basically how this works is like this:
