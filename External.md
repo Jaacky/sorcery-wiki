@@ -1,9 +1,5 @@
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
-**API was changed in v0.3.1 and configuration file changed in v0.4.0, please see [[changelog]]**
-
-**Known issues: there are some bugs with this module in v0.2.0 that were fixed in v0.2.1, so be sure to use the latest gem! This tutorial is updated for v0.4.0**
-
 First Add some db fields:
 
     rails g sorcery:install external --migrations
@@ -13,17 +9,13 @@ Which will create:
 
 ```ruby
 class SorceryExternal < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :authentications do |t|
       t.integer :user_id, :null => false
       t.string :provider, :uid, :null => false
     
       t.timestamps
     end
-  end
-    
-  def self.down
-    drop_table :authentications
   end
 end
 ```
