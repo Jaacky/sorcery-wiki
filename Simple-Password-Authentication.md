@@ -1,6 +1,4 @@
-**NOTE: In Rails 4, you'll need to remove the attr_accessible line in the user model and you will need to edit the user_params in the Users controller to include password and password_confirmation and not salt and crypted_password.**
-
-In this tutorial we will add Sorcery as the registration/authentication engine.
+In this tutorial we will add Sorcery as the registration/authentication engine to **Rails 4 app**.
 At the end of the tutorial we will be able to register a user, and then login and logout with a username and a password.
 
 Let's start from adding the sorcery gem into the Gemfile, and 'bundle install'. In the app's Gemfile:
@@ -25,11 +23,22 @@ It will create the initializer file, the User model, unit test stubs, and the de
 
 To get some views and controllers fast, we'll run rails scaffold generator, and skip the files we already created (we'll need to delete the new migration manually though):
 
-    rails g scaffold User username:string email:string crypted_password:string salt:string
-
+    rails g scaffold User email:string crypted_password:string salt:string
 
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
+
+We also need to allow UsersController receive form attributes:
+
+    class UsersController
+      # ...
+      private
+
+      def user_params
+        params.require(:user).permit(:email, :password, :password_confirmation)
+      end
+    end
+
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
 
 ```rhtml
@@ -44,20 +53,22 @@ We'll need to add a password 'virtual' field instead, that will hold the passwor
 </div>
 ```
 
-The virtual attributes will be added via 'validates_confirmation_of' as seen below. You may also want to allow the user to change only some of his attributes. Also we need to let the User model know it is using sorcery. We do that like this:
+The virtual attributes will be added via `validates :password, confirmation: true` as seen below. You may also want to allow the user to change only some of his attributes. Also we need to let the User model know it is using sorcery. We do that like this:
 
 ```ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  attr_accessible :username, :email, :password, :password_confirmation
 
-  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
-  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+  validates :password, length: { minimum: 3 }
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
+
+  validates :email, uniqueness: true
 end
 ```
 
-Now run the app and create a new user at [http://0.0.0.0:3000/users](http://0.0.0.0:3000/users). 
+Now run the app and create a new user at [http://0.0.0.0:3000/users](http://0.0.0.0:3000/users).
 Voila! The password was automatically encrypted, and a salt was also auto-created!
 By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
 
@@ -75,22 +86,19 @@ class UserSessionsController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
-    respond_to do |format|
-      if @user = login(params[:username],params[:password])
-        format.html { redirect_back_or_to(:users, :notice => 'Login successful.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    if @user = login(params[:email], params[:password])
+      redirect_back_or_to(:users, notice: 'Login successful')
+    else
+      flash.now[:alert] = "Login failed"
+      render action: "new"
     end
   end
-    
+
   def destroy
     logout
-    redirect_to(:users, :notice => 'Logged out!')
+    redirect_to(:users, notice: 'Logged out!')
   end
 end
 ```
@@ -113,8 +121,8 @@ Let's create the login form:
 # app/views/user_sessions/_form.html.erb
 <%= form_tag user_sessions_path, :method => :post do %>
   <div class="field">
-    <%= label_tag :username %><br />
-    <%= text_field_tag :username %>
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
   </div>
   <div class="field">
     <%= label_tag :password %><br />
@@ -133,9 +141,9 @@ And define some routes. At this point make sure your routes.rb file includes the
 root :to => 'users#index'
 resources :user_sessions
 resources :users
-  
-match 'login' => 'user_sessions#new', :as => :login
-match 'logout' => 'user_sessions#destroy', :as => :logout
+
+get 'login' => 'user_sessions#new', :as => :login
+post 'logout' => 'user_sessions#destroy', :as => :logout
 ```
 
 One Last thing, we need some navigation links, and a way to display flash messages:
@@ -151,11 +159,11 @@ One Last thing, we need some navigation links, and a way to display flash messag
       <%= csrf_meta_tags %>
   </head>
   <body>
-    
+
   <div id="nav">
     <% if current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout %>
+      <%= link_to "Logout", :logout, method: :post %>
     <% else %>
       <%= link_to "Register", new_user_path %> |
       <%= link_to "Login", :login %>
@@ -166,7 +174,7 @@ One Last thing, we need some navigation links, and a way to display flash messag
     <p id="alert"><%= alert %></p>
   </div>
   <%= yield %>
-    
+
   </body>
 </html>
 ```
@@ -181,10 +189,10 @@ Let's fix that by protecting our sensitive controller actions:
 before_filter :require_login
 
 # app/controllers/users_controller.rb
-skip_before_filter :require_login, :only => [:index, :new, :create]
+skip_before_filter :require_login, only: [:index, :new, :create]
 
 # app/controllers/user_sessions_controller.rb
-skip_before_filter :require_login, :except => [:destroy]
+skip_before_filter :require_login, except: [:destroy]
 ```
 
 The default controller code redirects you to "show" action after "create" completes.
@@ -194,19 +202,15 @@ This means when you register a user, you will be redirected to a protected actio
 # app/controllers/users_controller.rb
 ...
 if @user.save
-  format.html { redirect_to(:users, :notice => 'User was successfully created.') }
+  redirect_to(:users, notice: 'User was successfully created')
   ...
 ```
 
-There's only one problem. The default action of 'require_login' when blocking a logged-out user is to redirect to application root. Our root is the default Rails index.html page. Let's fix that by getting rid of the file and override the behavior:
-
-    rm public/index.html
-
 ```ruby
 # app/controllers/application_controller.rb
-protected
+private
 def not_authenticated
-  redirect_to login_path, :alert => "Please login first."
+  redirect_to login_path, alert: "Please login first"
 end
 ```
 
