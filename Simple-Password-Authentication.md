@@ -13,7 +13,15 @@ We'll start building the app by running this generator added by sorcery:
 
     rails g sorcery:install
 
+Before Sorcery `0.8.3` is released, we need to tune its configuration to use `:email` field as a main to authenticate users:
 
+```ruby
+# config/initializers/sorcery.rb
+config.user_config do |user|
+  # ...
+  user.username_attribute_names = [:email]
+end
+```
 
 It will create the initializer file, the User model, unit test stubs, and the default migration, which we want to run now:
 
