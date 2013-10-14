@@ -1,8 +1,3 @@
-**Rubies** - Sorcery was tested on ruby 1.9.2 and should be fully compatible with it.
-Other rubies were not yet tested, though they might be in the future.
-
-**Rails** - Rails 3+ is supported. There are currently no plans to support Rails 2.
-
 **paper_trail** - Sorcery _versions v0.6.1 and previous_ do not play nice with paper_trail due to a before_filter that paper_trail adds behind the scenes that calls 'current_user' a bit too early for sorcery. This issue *might* be solved by calling
 ```
     prepend_before_filter :require_login

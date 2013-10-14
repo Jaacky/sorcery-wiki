@@ -2,7 +2,6 @@ Welcome to the Sorcery wiki!
 
 This wiki is a work in progress, and constantly improving.
 
-[[Changelog]]
 
 [[Known incompatibilities]]
 
@@ -20,16 +19,15 @@ It was built with a few goals in mind:
 * Keep MVC cleanly separated - DB is for models, sessions are for controllers. Models stay unaware of sessions.
 
 
-
 Hopefully, I've achieved this. If not, let me know.
 
- 
+
 
 You can see how controllers, models, migrations and views can be used in Rails 3 with Sorcery by checking out [this example application](https://github.com/NoamB/sorcery-example-app).
 
 **There is also a mongoid branch at the same URL, showing how you can use Mongoid as your ORM.**
 
-Rails 3 Tutorials:
+Rails Tutorials:
 
 [[Simple Password Authentication]] | [[Remember Me]] | [[Session Timeout]]
 
@@ -39,12 +37,5 @@ Rails 3 Tutorials:
 
 Testing Tutorials:
 
-[[Testing Rails 3]] 
+[[Testing Rails]]
 
-Developer Tutorials:
-
-[[Running the specs]] | [[Under the hood - overall design]]
-
-Sinatra Tutorials (Legacy - not supported anymore):
-
-[[Basic Sinatra Usage]] | [[Testing Sinatra]]
