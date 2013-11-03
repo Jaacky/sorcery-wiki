@@ -178,8 +178,8 @@ One Last thing, we need some navigation links, and a way to display flash messag
     <% end %>
   </div>
   <div>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
   </div>
   <%= yield %>
 
