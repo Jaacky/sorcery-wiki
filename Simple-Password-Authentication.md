@@ -31,7 +31,7 @@ It will create the initializer file, the User model, unit test stubs, and the de
 
 To get some views and controllers fast, we'll run rails scaffold generator, and skip the files we already created (we'll need to delete the new migration manually though):
 
-    rails g scaffold User email:string crypted_password:string salt:string
+    rails g scaffold user email:string crypted_password:string salt:string --migration false
 
 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
