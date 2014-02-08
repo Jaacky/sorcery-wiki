@@ -67,6 +67,4 @@ Now for the fun stuff - Let's say you want to display on your site the usernames
     ...
 ```
 
-**Important Note:** - you must make the activity logging attributes you use accessible by using *attr_accessible* or by not naming them in *attr_protected*, otherwise the writing with update_attributes! inside the gem will fail! Be sure to use attr_accessible/protected only after the call to *authenticates_with_sorcery!*.
-
 There you have it! Try logging in with two users from different browsers and they should see each other's name on the front page.
