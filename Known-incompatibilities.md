@@ -35,4 +35,4 @@ when require 'refinerycms', it loads User model (I don't know how), which calls 
 
 **rails_admin**
 
-List of potential problems and suggested solutions are provided in (RailsAdmin wiki)[https://github.com/sferik/rails_admin/wiki/Sorcery]
+List of potential problems and suggested solutions are provided in [RailsAdmin wiki](https://github.com/sferik/rails_admin/wiki/Sorcery)
