@@ -3,7 +3,7 @@ This tutorial shows how to use Rails routes constraints with Sorcery gem. Thanks
 
 First, define `UserConstraint` module that will be used for all constraints:
 
-```
+```ruby
 module RouteConstraints::UserConstraint
   def current_user(request)
     User.find_by_id(request.session[:user_id])
@@ -13,7 +13,7 @@ end
 
 Then, having that module defined, you can specify specific constraint classes. In these examples, first route will work only if there's no user logged in, the second will work only for logged user who is an admin:
 
-```
+```ruby
 class RouteConstraints::NoUserRequiredConstraint
   include RouteConstraints::UserConstraint
 
@@ -23,7 +23,7 @@ class RouteConstraints::NoUserRequiredConstraint
 end
 ```
 
-```
+```ruby
 class RouteConstraints::AdminRequiredConstraint
   include RouteConstraints::UserConstraint
 
@@ -36,7 +36,7 @@ end
 
 Finally, you can add the constraints to the `config/routes.rb`:
 
-```
+```ruby
 MyApp::Application.routes.draw do
 
   # other routes …
