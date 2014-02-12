@@ -35,6 +35,8 @@ Rails Tutorials:
 
 [[Activity Logging]] | [[Brute Force Protection]] | [[External]]
 
+[[Routes Constraints]]
+
 Testing Tutorials:
 
 [[Testing Rails]]
