@@ -36,3 +36,13 @@ when require 'refinerycms', it loads User model (I don't know how), which calls 
 **rails_admin**
 
 List of potential problems and suggested solutions are provided in [RailsAdmin wiki](https://github.com/sferik/rails_admin/wiki/Sorcery)
+
+**rails-api**
+
+In order to be able to use Sorcery with `ActionController::API` class from Rails-API project, you need to manually include `Sorcery::Controller` module in your controller.
+
+```ruby
+class ApplicationController < ActionController::API
+  include Sorcery::Controller
+end
+```
