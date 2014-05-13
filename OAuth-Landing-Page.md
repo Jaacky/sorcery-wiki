@@ -11,7 +11,7 @@ class OauthsController < ApplicationController
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
   def oauth
-    store_location #it's worked session[:return_to_url] = request.referer
+    session[:return_to_url] = request.referer unless request.referer =~ /oauth/
     login_at(params[:provider])
   end
       
