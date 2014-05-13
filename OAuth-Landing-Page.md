@@ -1,5 +1,4 @@
 ### Point
-* store_location
 * session[:return_to_url]
 * redirect_back_or_to
 
