@@ -22,7 +22,7 @@ In `spec/spec_helper.rb`, include the test helper module.
 
 ```ruby
 RSpec.configure do |config|
-  config.include Sorcery::TestHelpers::Rails::Controler, type: [:controller]
+  config.include Sorcery::TestHelpers::Rails::Controller, type: [:controller]
   config.include Sorcery::TestHelpers::Rails::Integration, type: [:feature]
 end
 ```
