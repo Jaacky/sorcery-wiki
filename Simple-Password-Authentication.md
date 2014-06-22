@@ -171,7 +171,7 @@ One Last thing, we need some navigation links, and a way to display flash messag
   <div id="nav">
     <% if current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout, method: :get %>
+      <%= link_to "Logout", :logout, method: :post %>
     <% else %>
       <%= link_to "Register", new_user_path %> |
       <%= link_to "Login", :login %>
