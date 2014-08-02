@@ -35,7 +35,7 @@ Rails Tutorials:
 
 [[Activity Logging]] | [[Brute Force Protection]] | [[External]]
 
-[[Routes Constraints]]
+[[Routes Constraints]] | [[Fetching currently active users]]
 
 Testing Tutorials:
 
