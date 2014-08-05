@@ -8,8 +8,10 @@ Somewhere in your spec directory add the following module. `spec/support` is a g
 module Sorcery
   module TestHelpers
     module Rails
-      def login_user_post(user, password)
-        page.driver.post(user_sessions_url, { username: user, password: password}) 
+      module Integration
+        def login_user_post(user, password)
+          page.driver.post(user_sessions_url, { username: user, password: password}) 
+        end
       end
     end
   end
