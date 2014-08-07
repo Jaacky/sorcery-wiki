@@ -38,7 +38,7 @@ We don't want users to edit/view their crypted password or salt, so we'll remove
 
 We also need to allow UsersController receive form attributes:
 
-    class UsersController
+    class UsersController < ApplicationController
       # ...
       private
 
