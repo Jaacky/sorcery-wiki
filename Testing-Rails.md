@@ -14,7 +14,10 @@ noam:
 In your test/spec helper make sure to include:
 
 ```ruby
-include Sorcery::TestHelpers::Rails
+RSpec.configure do |config|
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
+  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
+end
 ```
 
 And now you can use the following helpers:
