@@ -74,6 +74,7 @@ class PasswordResetsController < ApplicationController
     
   # This is the reset password form.
   def edit
+    @token = params[:id]
     @user = User.load_from_reset_password_token(params[:id])
 
     if @user.blank?
@@ -138,7 +139,7 @@ Now we need some work on the reset password views:
 ```rhtml
 # app/views/password_resets/edit.html.erb
 <h1>Choose a new password</h1>
-<%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
+<%= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -162,7 +163,6 @@ Now we need some work on the reset password views:
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
-    <%= hidden_field_tag :token, @token %>
   </div>
   <div class="actions">
     <%= f.submit %>
