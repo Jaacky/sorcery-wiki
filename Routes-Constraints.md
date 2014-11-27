@@ -41,7 +41,7 @@ MyApp::Application.routes.draw do
 
   # other routes …
 
-  root :to => 'admin#dashbard', :constraints => RouteConstraints::AdminRequiredConstraint.new
+  root :to => 'admin#dashboard', :constraints => RouteConstraints::AdminRequiredConstraint.new
   root :to => 'home#welcome', :constraints => RouteConstraints::NoUserRequiredConstraint.new
 
 end
