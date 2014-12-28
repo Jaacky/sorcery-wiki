@@ -21,7 +21,7 @@ Though this hasn't been proven (please report success).
 ```
 
 
-The 'sorcery' gem need to be placed before 'rerinferycms' gem, otherwise it won't work.
+The 'sorcery' gem need to be placed before 'refinerycms' gem, otherwise it won't work.
 
 under the hood, for example
 
