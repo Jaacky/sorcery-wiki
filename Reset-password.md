@@ -113,6 +113,11 @@ resources :password_resets
 ```
 
 ```rhtml
+# app/views/layouts/mailer.html.erb
+= yield
+```
+
+```rhtml
 # app/views/user_mailer/reset_password_email.text.erb
 Hello, <%= @user.email %>
 ===============================================
