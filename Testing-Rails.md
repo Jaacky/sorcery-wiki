@@ -37,13 +37,15 @@ In `spec/support/authentication.rb`
 ```ruby
 module AuthenticationForFeatureRequest
   def login user, password = 'login'
-    user.update_attribute :password, password
+    user.update_attributes password: password
 
     page.driver.post sessions_url, {email: user.email, password: password}
     visit root_url
   end
 end
 ```
+
+Note that you need to update password with `update_attributes` or `update_attributes!`, not with `update_attribute` because generating salt and encrypting password are triggered by `before_validation` since v0.9.0 but `update_attribute` skips validations.
 
 In `spec/spec_helper.rb`
 
