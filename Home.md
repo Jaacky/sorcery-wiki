@@ -41,3 +41,6 @@ Testing Tutorials:
 
 [[Testing Rails]]
 
+Tutorials in another sites:
+
+[Magical Authentication with Sorcery](http://www.sitepoint.com/magical-authentication-sorcery/) by Ilya Bodrov on Sitepoint.com
