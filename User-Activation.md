@@ -6,7 +6,7 @@ First add some db fields:
 ***
 
 ```
-rails g sorcery:install user_activation  --migrations
+rails g sorcery:install user_activation  --only-submodules
 ```
 
 
