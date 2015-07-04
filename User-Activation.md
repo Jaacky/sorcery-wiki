@@ -113,11 +113,11 @@ end
 
 ```ruby
 # app/views/user_mailer/activation_needed_email.text.erb
-Welcome to example.com, <%= @user.username %>
+Welcome to example.com, <%= @user.email %>
 ===============================================
      
 You have successfully signed up to example.com,
-your username is: <%= @user.username %>.
+your username is: <%= @user.email %>.
     
 To login to the site, just follow this link: <%= @url %>.
      
@@ -126,11 +126,11 @@ Thanks for joining and have a great day!
 
 ```ruby
 # app/views/user_mailer/activation_success_email.text.erb
-Congratz, <%= @user.username %>
+Congratz, <%= @user.email %>
 ===============================================
      
 You have successfully activated your example.com account,
-your username is: <%= @user.username %>.
+your username is: <%= @user.email %>.
      
 To login to the site, just follow this link: <%= @url %>.
      
