@@ -8,6 +8,27 @@ noam:
   activation_state: active
 ```
 
+# TestCase
+For simple out of the box testing:
+```ruby
+class TeamsControllerTest < ActionController::TestCase
+  include Sorcery::TestHelpers::Rails::Integration
+  include Sorcery::TestHelpers::Rails::Controller
+
+  setup do
+    @team = teams(:one)
+    @user = users(:one)
+
+    login_user(user = @user, route = login_url)  # replace with your login url path
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:teams)
+  end
+...
+```
 
 # Functional Tests
 
