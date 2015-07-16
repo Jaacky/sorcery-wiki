@@ -41,6 +41,10 @@ This is usually the result of a "Remember me" check box from a form.
 If it's anything that evals to true, it will 'remember' the user.
 
 ```ruby
+# app/views/user_sessions/_form.html.erb
+<%= check_box_tag :remember, params[:remember], true %>
+<%= label_tag :remember %>
+
 # app/controllers/user_sessions_controller.rb
 @user = login(params[:username], params[:password], params[:remember])
 ```
