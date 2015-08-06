@@ -184,7 +184,7 @@ Let's fix that by protecting our sensitive controller actions:
 
 ```ruby
 # app/controllers/application_controller.rb
-before_action :require_login
+before_filter :require_login
 
 # app/controllers/users_controller.rb
 skip_before_filter :require_login, only: [:index, :new, :create]
