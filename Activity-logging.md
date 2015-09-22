@@ -3,7 +3,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 Let's add the db stuff first:
 
 ```
-    rails g sorcery:install activity_logging  --migrations
+    rails g sorcery:install activity_logging --only-submodules
 ```
 
 
