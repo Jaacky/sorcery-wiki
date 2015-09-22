@@ -2,7 +2,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 
 First run the generator below, or include the code yourself:
 
-    rails g sorcery:install remember_me --migrations
+    rails g sorcery:install remember_me --only-submodules
 
 
 ```ruby
