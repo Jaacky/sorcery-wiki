@@ -2,7 +2,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 
 First Add some db fields:
 
-    rails g sorcery:install brute_force_protection  --migrations
+    rails g sorcery:install brute_force_protection --only-submodules
 
 Which will create:
 
