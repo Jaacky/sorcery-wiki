@@ -4,7 +4,7 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 
 First Add some db fields:
 
-    rails g sorcery:install reset_password --migrations
+    rails g sorcery:install reset_password --only-submodules
 
 Which will create:
 
