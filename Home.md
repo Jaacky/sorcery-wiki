@@ -41,6 +41,9 @@ Testing Tutorials:
 
 [[Testing Rails]]
 
+Useful Add-ons
+[AnyLogin](https://github.com/igorkasyanchuk/any_login) gem for quick login as any user without password.
+
 Tutorials in another sites:
 
 [Magical Authentication with Sorcery](http://www.sitepoint.com/magical-authentication-sorcery/) by Ilya Bodrov on Sitepoint.com
