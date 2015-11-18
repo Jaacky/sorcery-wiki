@@ -23,9 +23,11 @@ class OauthsController < ApplicationController
         @user = create_from(provider)
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
 
+        # reset_session clears session[:return_to_url], so calculate the redirect first
+        redirect_back_or_to root_path, :notice => "Logged in from #{provider.titleize}!"
+
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_back_or_to root_path, :notice => "Logged in from #{provider.titleize}!"
       rescue
         redirect_back_or_to root_path, :alert => "Failed to login from #{provider.titleize}!"
       end
