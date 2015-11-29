@@ -184,13 +184,13 @@ Let's fix that by protecting our sensitive controller actions:
 
 ```ruby
 # app/controllers/application_controller.rb
-before_filter :require_login
+before_action :require_login
 
 # app/controllers/users_controller.rb
-skip_before_filter :require_login, only: [:index, :new, :create]
+skip_before_action :require_login, only: [:index, :new, :create]
 
 # app/controllers/user_sessions_controller.rb
-skip_before_filter :require_login, except: [:destroy]
+skip_before_action :require_login, except: [:destroy]
 ```
 
 The default controller code redirects you to "show" action after "create" completes.
