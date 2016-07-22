@@ -6,7 +6,7 @@
   * Run the clone command, example: `git clone https://github.com/<your_user_name>/sorcery.git`
 3. With the same terminal, `cd` into your freshly made repository using: `cd ./sorcery`
 4. Run `bundle install`
-5. To ensure everything is ready, run `bundle exec rspec spec`
+5. To ensure everything is ready, run `bundle exec rspec spec`, all tests should pass.
 
 ## Merging your contributions
 
