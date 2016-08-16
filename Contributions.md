@@ -20,7 +20,7 @@
   2. If there are any conflicts, resolve them via text editor then run:
     * `git add -A` then `git rebase --continue`
 4. `git push --force-with-lease`
-  *(WARNING: This will delete any history on your github fork and overwrite it with your local copy. This is necessary however if history was rewritten due to changes to the main repository.)
+  * (WARNING: This will delete any history on your github fork and overwrite it with your local copy. This is necessary however if history was rewritten due to changes to the main repository.)
 4. Submit a pull-request via github.
 
 
