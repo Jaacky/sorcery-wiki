@@ -1,7 +1,8 @@
+**Meta**
 * [[Home]]
 * [[Changelog]]
 
-**Usage**
+**Using Sorcery**
 * [[Activity Logging]]
 * [[Brute Force Protection]]
 * [[External]]
@@ -10,5 +11,5 @@
 * [[Integration Testing|Integration Testing with Rspec, Capybara and Fabricator]]
 * [[Known Incompatibilities]]
 
-**Contributing**
+**Contributing to Sorcery**
 * [[Contributions]]
