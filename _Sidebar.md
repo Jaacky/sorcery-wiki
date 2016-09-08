@@ -1,6 +1,7 @@
 **Meta**
 * [[Home]]
 * [[Changelog]]
+* [[Known Incompatibilities]]
 
 **Using Sorcery**
 * [[Activity Logging]]
@@ -9,7 +10,6 @@
 * [[Fetching Currently Active Users]]
 * [[HTTP Basic Auth]]
 * [[Integration Testing|Integration Testing with Rspec, Capybara and Fabricator]]
-* [[Known Incompatibilities]]
 * [[OAuth Landing Page]]
 * [[Password-less Activation|Password less activation]]
 * [[Remember Me]]
