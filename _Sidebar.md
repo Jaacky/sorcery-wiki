@@ -17,6 +17,7 @@
 * [[Routes Constraints]]
 * [[Session Timeout]]
 * [[Simple Password Authentication]]
+* [[Testing Rails]]
 * [[User Activation]]
 
 **Contributing to Sorcery**
