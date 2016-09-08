@@ -14,6 +14,10 @@
 * [[Password-less Activation|Password less activation]]
 * [[Remember Me]]
 * [[Reset Password]]
+* [[Routes Constraints]]
+* [[Session Timeout]]
+* [[Simple Password Authentication]]
+* [[User Activation]]
 
 **Contributing to Sorcery**
 * [[Contributions]]
