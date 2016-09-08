@@ -20,5 +20,5 @@
 * [[User Activation]]
 
 **Contributing to Sorcery**
-* [[Contributions]]
+* [[Git Workflow]]
 * [[Running The Specs]]
