@@ -1,6 +1,6 @@
 ## Preparing local instance
 
-1. Fork Sorcery on Github
+1. [Fork Sorcery on Github](https://github.com/NoamB/sorcery/fork)
 2. Clone your forked copy onto your working machine
   * Open terminal and `cd` into where you would like the repository saved.
   * Run the clone command, example: `git clone https://github.com/<your_user_name>/sorcery.git`
