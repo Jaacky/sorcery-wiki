@@ -1,4 +1,4 @@
-As of Sorcery 0.8.7, the `current_users` controller method is deprecated, which means it will be removed in 0.9.0 or 1.0 version. Of course it can be defined by the user. Here are presented possible implementations (the ones that were used in 0.8.6 and earlier versions.
+As of Sorcery 0.8.7, the `current_users` controller method is deprecated, which means it will be removed in 0.9.0 or 1.0 version. Of course it can be defined by the user. Here are presented possible implementations (the ones that were used in 0.8.6 and earlier versions.)
 
 **ActiveRecord**
 ```ruby
