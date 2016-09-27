@@ -1,12 +1,12 @@
 ## Preparing local instance
 
-1. [Fork Sorcery on Github](https://github.com/NoamB/sorcery/fork)
+1. [Fork Sorcery on Github](https://github.com/Sorcery/sorcery/fork)
 2. Clone your forked copy onto your working machine
   * Open terminal and `cd` into where you would like the repository saved.
   * Run the clone command, example: `git clone https://github.com/<your_user_name>/sorcery.git`
 3. With the same terminal, `cd` into your freshly made repository using: `cd ./sorcery`
 4. Add upstream to remotes
-  * `git remote add upstream https://github.com/NoamB/sorcery.git`
+  * `git remote add upstream https://github.com/Sorcery/sorcery.git`
 5. Run `bundle install`
 6. To ensure everything is ready, run `bundle exec rspec spec`, all tests should pass.
 

@@ -49,7 +49,7 @@ logout_user
 ```
 
 
-See [the example app](https://github.com/NoamB/sorcery-example-app/blob/master/test/functional/users_controller_test.rb) for a working example.
+See [the example app](https://github.com/Sorcery/sorcery-example-app/blob/master/test/functional/users_controller_test.rb) for a working example.
 
 # Feature Tests w/ Rack::Tests
 

@@ -31,7 +31,7 @@ under the hood, for example
     gem 'sorcery'
 ```
 
-when require 'refinerycms', it loads User model (I don't know how), which calls `User.authenticates_with_sorcery!`,  but it's not ready (means [user_config](https://github.com/NoamB/sorcery/blob/master/lib/sorcery/initializers/initializer.rb#L61) is not [loaded](https://github.com/NoamB/sorcery/blob/master/lib/sorcery/controller.rb#L15)).  We need first require 'sorcery', which call [ ActionController::Base.send(:include, Sorcery::Controller)](https://github.com/NoamB/sorcery/blob/master/lib/sorcery/engine.rb#L11),  it prepares user_config for `User.authenticates_with_sorcery!`.
+when require 'refinerycms', it loads User model (I don't know how), which calls `User.authenticates_with_sorcery!`,  but it's not ready (means [user_config](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/initializers/initializer.rb#L61) is not [loaded](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/controller.rb#L15)).  We need first require 'sorcery', which call [ ActionController::Base.send(:include, Sorcery::Controller)](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/engine.rb#L11),  it prepares user_config for `User.authenticates_with_sorcery!`.
 
 **rails_admin**
 
