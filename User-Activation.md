@@ -18,13 +18,13 @@ class SorceryUserActivation < ActiveRecord::Migration
     add_column :users, :activation_state, :string, :default => nil
     add_column :users, :activation_token, :string, :default => nil
     add_column :users, :activation_token_expires_at, :datetime, :default => nil
-        
+
     add_index :users, :activation_token
   end
-    
+
   def self.down
     remove_index :users, :activation_token
-    
+
     remove_column :users, :activation_token_expires_at
     remove_column :users, :activation_token
     remove_column :users, :activation_state
@@ -32,7 +32,7 @@ class SorceryUserActivation < ActiveRecord::Migration
 end
 ```
 
-    rake db:migrate   
+    rake db:migrate
 
 
 ### Mongoid
@@ -102,7 +102,7 @@ def activation_needed_email(user)
   mail(:to => user.email,
        :subject => "Welcome to My Awesome Site")
 end
-    
+
 def activation_success_email(user)
   @user = user
   @url  = "http://0.0.0.0:3000/login"
@@ -115,12 +115,12 @@ end
 # app/views/user_mailer/activation_needed_email.text.erb
 Welcome to example.com, <%= @user.email %>
 ===============================================
-     
+
 You have successfully signed up to example.com,
 your username is: <%= @user.email %>.
-    
+
 To login to the site, just follow this link: <%= @url %>.
-     
+
 Thanks for joining and have a great day!
 ```
 
@@ -128,12 +128,12 @@ Thanks for joining and have a great day!
 # app/views/user_mailer/activation_success_email.text.erb
 Congratz, <%= @user.email %>
 ===============================================
-     
+
 You have successfully activated your example.com account,
 your username is: <%= @user.email %>.
-     
+
 To login to the site, just follow this link: <%= @url %>.
-     
+
 Thanks for joining and have a great day!
 ```
 
