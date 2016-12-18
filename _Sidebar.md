@@ -8,6 +8,7 @@
 * [[Activity Logging]]
 * [[Brute Force Protection]]
 * [[DataMapper Support]]
+* [[DelayedJob Integration]]
 * [[External]]
 * [[Fetching Currently Active Users]]
 * [[HTTP Basic Auth]]
