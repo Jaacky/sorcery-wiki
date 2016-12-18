@@ -20,6 +20,7 @@
 * [[Routes Constraints]]
 * [[Session Timeout]]
 * [[Simple Password Authentication]]
+* [[Single Table Inheritance Support]]
 * [[Testing Rails]]
 * [[User Activation]]
 
