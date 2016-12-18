@@ -1,0 +1,1 @@
+STI is supported via the `user.subclasses_inherit_config` setting in `config/initializers/sorcery.rb`.
