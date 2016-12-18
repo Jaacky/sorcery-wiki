@@ -6,6 +6,7 @@
 **Using Sorcery**
 * [[Activity Logging]]
 * [[Brute Force Protection]]
+* [[DataMapper Support]]
 * [[External]]
 * [[Fetching Currently Active Users]]
 * [[HTTP Basic Auth]]
