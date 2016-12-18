@@ -2,6 +2,7 @@
 * [[Home]]
 * [[Changelog]]
 * [[Known Incompatibilities]]
+* [[Upgrading]]
 
 **Using Sorcery**
 * [[Activity Logging]]
