@@ -39,24 +39,27 @@ end
 ***
 
 For mongoid just add these three fields to your User model :
+
 ```ruby
-    field :activation_state,            type: String
-    field :activation_token,            type: String
-    field :activation_token_expires_at, type: DateTime
+field :activation_state,            type: String
+field :activation_token,            type: String
+field :activation_token_expires_at, type: DateTime
 ```
-_note that the token_expires_at field is only needed if you have setup user.activation_token_expiration_period in the sorcery initializer._
+
+_Note that the token_expires_at field is only needed if you have setup user.activation_token_expiration_period in the sorcery initializer._
 
 In addition you can add an index on the token field :
+
 ```ruby
-    index({ activation_token: 1 }, { unique: true, background: true })
+index({ activation_token: 1 }, { unique: true, background: true })
 ```
 
-    rake db:mongoid:create_indexes
-<br />
-<br />
+    $ rake db:mongoid:create_indexes
+
+
 Now our database is ready, we need a mailer with two actions:
 
-    rails g mailer UserMailer activation_needed_email activation_success_email
+    $ rails g mailer UserMailer activation_needed_email activation_success_email
 
 You really don't have to use ActionMailer. You can use any ruby object that responds to the above actions. Actually these method names are configurable too! This is useful in case you want to send emails in the background, with gems such as 'delayed_job'. Simply pass your own 'mailer' and make it create the background jobs as you normally would, when triggered by Sorcery.
 
@@ -75,7 +78,7 @@ Then add the user_activation submodule:
 
 ```ruby
 # config/initializers/sorcery.rb
-Rails.application.config.sorcery.submodules = [:user_activation, blabla, blablu, ...]
+Rails.application.config.sorcery.submodules = [:user_activation, bla, bla, ...]
 ```
 
 And configure the User model with our mailer defined:
@@ -99,15 +102,13 @@ Now when a user is created, an email will be sent to him. Currently it's not a v
 def activation_needed_email(user)
   @user = user
   @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
-  mail(:to => user.email,
-       :subject => "Welcome to My Awesome Site")
+  mail(to: user.email, subject: 'Welcome to My Awesome Site')
 end
 
 def activation_success_email(user)
   @user = user
   @url  = "http://0.0.0.0:3000/login"
-  mail(:to => user.email,
-       :subject => "Your account is now activated")
+  mail(to: user.email, subject: 'Your account is now activated')
 end
 ```
 
@@ -126,13 +127,12 @@ Thanks for joining and have a great day!
 
 ```ruby
 # app/views/user_mailer/activation_success_email.text.erb
-Congratz, <%= @user.email %>
-===============================================
+Congratulations, <%= @user.email %>!
 
 You have successfully activated your example.com account,
 your username is: <%= @user.email %>.
 
-To login to the site, just follow this link: <%= @url %> .
+To login to the site, just follow this link: <%= @url %>.
 
 Thanks for joining and have a great day!
 ```
