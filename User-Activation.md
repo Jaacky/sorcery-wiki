@@ -119,7 +119,7 @@ Welcome to example.com, <%= @user.email %>
 You have successfully signed up to example.com,
 your username is: <%= @user.email %>.
 
-To login to the site, just follow this link: <%= @url %>.
+To login to the site, just follow this link: <%= @url %> .
 
 Thanks for joining and have a great day!
 ```
@@ -132,7 +132,7 @@ Congratz, <%= @user.email %>
 You have successfully activated your example.com account,
 your username is: <%= @user.email %>.
 
-To login to the site, just follow this link: <%= @url %>.
+To login to the site, just follow this link: <%= @url %> .
 
 Thanks for joining and have a great day!
 ```
