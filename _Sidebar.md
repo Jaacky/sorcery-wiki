@@ -3,6 +3,7 @@
 * [[Changelog]]
 * [[Known Incompatibilities]]
 * [[Upgrading]]
+* [[Getting Started]]
 
 **Using Sorcery**
 * [[Activity Logging]]
