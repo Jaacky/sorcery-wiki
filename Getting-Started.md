@@ -13,4 +13,15 @@ If you're installing Sorcery on an existing application, skip ahead to step 2.
 
 # Part 2 - Installing Sorcery / Password-based Authentication
 
+1. Add sorcery to the Gemfile:
+
+  ```ruby
+  # ./sorcery-tutorial-app/Gemfile
+  gem 'sorcery'
+  ```
+
+2. Run `bundle` to install sorcery
+3. Run `rails g sorcery:install` to install sorcery without any submodules enabled.
+4. Run `rake db:migrate` to update the database schema with our new user model.
+
 # Part 3 - Adding OAuth-based Authentication
