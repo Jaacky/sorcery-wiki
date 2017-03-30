@@ -74,7 +74,7 @@ Now we need to associate User with Authentication:
 ```ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :authentications_attributes
+  attr_accessor :email, :password, :password_confirmation, :authentications_attributes
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
@@ -87,7 +87,7 @@ end
 ```ruby
 # app/models/authentication.rb
 class Authentication < ActiveRecord::Base
-  attr_accessible :user_id, :provider, :uid
+  attr_accessor :user_id, :provider, :uid
   belongs_to :user
 end
 ```
@@ -108,7 +108,7 @@ We'll need a controller to handle the authentications:
 ```ruby
 # app/controllers/oauths_controller.rb
 class OauthsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_action :require_login
       
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
