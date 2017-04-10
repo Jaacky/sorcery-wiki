@@ -3,7 +3,7 @@
 * [[Changelog]]
 * [[Known Incompatibilities]]
 * [[Upgrading]]
-* [[Getting Started]] **(WIP)**
+* [[Getting Started]] (WIP)
 
 **Using Sorcery**
 * [[Activity Logging]]
