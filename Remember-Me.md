@@ -46,7 +46,7 @@ If it's anything that evals to true, it will 'remember' the user.
 <%= label_tag :remember %>
 
 # app/controllers/user_sessions_controller.rb
-@user = login(params[:username], params[:password], params[:remember])
+@user = login(params[:email], params[:password], params[:remember])
 ```
 
 To "forget me" just **logout**.
