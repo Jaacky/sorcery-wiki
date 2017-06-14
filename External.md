@@ -103,7 +103,7 @@ We'll need a controller to handle the authentications:
 ```ruby
 # app/controllers/oauths_controller.rb
 class OauthsController < ApplicationController
-  skip_before_action :require_login
+  skip_before_action :require_login, raise: false
       
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
