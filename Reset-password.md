@@ -57,6 +57,8 @@ Make it look like this:
 ```ruby
 # app/controllers/password_resets_controller.rb
 class PasswordResetsController < ApplicationController
+  # In Rails 5 and above you may have to replace by the following
+  # skip_before_action :require_login, raise: false
   skip_before_filter :require_login
     
   # request password reset.
