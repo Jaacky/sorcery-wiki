@@ -57,9 +57,10 @@ Make it look like this:
 ```ruby
 # app/controllers/password_resets_controller.rb
 class PasswordResetsController < ApplicationController
-  # In Rails 5 and above you may have to replace by the following
-  # skip_before_action :require_login, raise: false
-  skip_before_filter :require_login
+  # In Rails 5 and above, this will raise an error if
+  # before_action :require_login
+  # is not declared in your ApplicationController.
+  skip_before_action :require_login
     
   # request password reset.
   # you get here when the user entered his email in the reset password form and submitted it.
