@@ -1,3 +1,7 @@
+**Facebook users, please use Sorcery version 0.11.0 or greater, see: [#53](https://github.com/Sorcery/sorcery/pull/53)**
+
+***
+
 In this tutorial we will build upon the app created at [[Simple Password Authentication]] so make sure you understand it.
 
 First Add some db fields:
