@@ -1,7 +1,7 @@
 After checking out the gem, I usually start by creating a gemset with rvm:
 
 ```
-    rvm use 1.9.2@sorcery --create
+    rvm use 2.2.2@sorcery --create
 ```
 
 Then I install bundler
@@ -23,7 +23,7 @@ Now you have a few important rake tasks at your disposal:
 `rake bundle_update` - will run `bundle update` recursively.
 
 The default `rake` task from the gem root folder runs all specs.
-That includes specs for all of Sorcery supported platforms and ORMs (Rails 3, ActiveRecord, Mongoid, MongoMapper etc.).
+That includes specs for all of Sorcery supported platforms and ORMs (Rails 5, ActiveRecord, Mongoid, MongoMapper etc.).
 
 The ActiveRecord specs expect a local MySQL server present at the default port.
 
