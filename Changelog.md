@@ -1,14 +1,47 @@
 # Changelog
+## HEAD
+* Set user.stretches to 1 in test env by default [#81](https://github.com/Sorcery/sorcery/pull/81)
+* Allow user to be loaded from other source when session expires. fix #89 [#94](https://github.com/Sorcery/sorcery/pull/94)
+* Added a new ArgumentError for not defined user_class in config [#82](https://github.com/Sorcery/sorcery/pull/82)
+* Updated Required Ruby version to 2.2 [#85](https://github.com/Sorcery/sorcery/pull/85)
+* Add configuration for token randomness [#67](https://github.com/Sorcery/sorcery/pull/67)
+* Add facebook user_info_path option to initializer.rb [#63](https://github.com/Sorcery/sorcery/pull/63)
+* Add new function: `build_from` (allows building a user instance from OAuth without saving) [#54](https://github.com/Sorcery/sorcery/pull/54)
 
-## 1.0 (not released yet)
+## 0.11.0
+
+* Refer to User before calling remove_const to avoid NameError [#58](https://github.com/Sorcery/sorcery/pull/58)
+* Resurrect block authentication, showing auth failure reason. [#41](https://github.com/Sorcery/sorcery/pull/41)
+* Add github scope option to initializer.rb [#50](https://github.com/Sorcery/sorcery/pull/50)
+* Fix Facebook being broken due to API deprecation [#53](https://github.com/Sorcery/sorcery/pull/53)
+
+## 0.10.3
+
+* Revert removal of MongoID Adapter (breaks Sorcery for MongoID users until separate gem is created) [#45](https://github.com/Sorcery/sorcery/pull/45)
+
+## 0.10.2
+
+* Added support for Microsoft OAuth (thanks to @athix) [#37](https://github.com/Sorcery/sorcery/pull/37)
+
+## 0.10.1
+
+* Fixed LinkedIn bug [#36](https://github.com/Sorcery/sorcery/pull/36)
+
+## 0.10.0
 
 * Adapters (Mongoid, MongoMapper, DataMapper) are now separated from the core Sorcery repo and moved under `sorcery-rails` organization. Special thanks to @juike!
 * `current_users` method was removed
 * Added `logged_in?` `logged_out?` `online?` to activity_logging instance methods
-* PayPal provider added to external submodule
+* Added support for PayPal OAuth (thanks to @rubenmoya)
+* Added support for Slack OAuth (thanks to @youzik)
+* Added support for WeChat OAuth (thanks to @Darmody)
 * Deprecated Rails 3
   * Deprecated using `callback_filter` in favor of `callback_action`
   * Added null: false to migrations
+* Added support for Rails 5 (thanks to @kyuden)
+* Added support for Ruby 2.4 (thanks to @kyuden)
+* Added WeChat provider to external submodule.
+* Namespace login lock/unlock methods to fix conflicts with Rails lock/unlock (thanks to @kyuden)
 
 ## 0.9.1
 
@@ -18,7 +51,6 @@
 * Added support for new Facebook Graph API (thanks to @mchaisse)
 * Fixed issue with Xing submodule (thanks to @yoyostile)
 * Fixed security bug with using `state` field in oAuth requests
-
 
 ## 0.9.0
 
@@ -38,7 +70,6 @@
 * #locked? method is now public API (thanks @rogercampos)
 * Introduces a new User instance method `generate_reset_password_token` to generate a new reset password token without sending an email (thanks to @tbuehl)
 
-
 ## 0.8.6
 
 * `current_user` returns `nil` instead of `false` if there's no user loggd in (#493)
@@ -52,7 +83,6 @@
 * Helpers for integration tests were added
 * Fixed problems with special characters in user login attributes (MongoMapper & Mongoid)
 * Fixed remaining `password_confirmation` value - it is now cleared just like `password`
-
 
 ## 0.8.5
 * Fixed add_provider_to_user with CamelCased authentications_class model (#382)
@@ -70,24 +100,23 @@
     ```
 * `rails generate sorcery:install` now works inside Rails engine
 
-
 ## 0.8.4
 
-  * Few security fixes in `external` module
+* Few security fixes in `external` module
 
+## 0.8.3 (yanked because of bad Jeweler release)
 
 ## 0.8.2
 
 * Activity logging feature has a new column called `last_login_from_ip_address` (string type). If you use ActiveRecord, you will have to add this column to DB ([#465](https://github.com/NoamB/sorcery/issues/465))
 
+## 0.7.5-0.8.1
 
-## 0.7.2
+<!-- HERE BE DRAGONS (Changelogs never written) -->
+
+## 0.7.1-0.7.4
 
 * Fixed a bug in the new generator
-
-
-## 0.7.1
-
 * Many bugfixes
 * MongoMapper added to supported ORMs list, thanks @kbighorse
 * Sinatra support discontinued!
@@ -236,7 +265,7 @@ Separated mailers between user_activation and password_reset and updated readme.
 Fixed bug with BCrypt not being used properly by the lib and thus not working for authentication.
 
 ## 0.1.0
- 
+
 ### Core Features:
 * login/logout, optional redirect on login to where the user tried to reach before, configurable redirect for non-logged-in users.
 * password encryption, algorithms: bcrypt(default), md5, sha1, sha256, sha512, aes256, custom(yours!), none. Configurable stretches and salt.
