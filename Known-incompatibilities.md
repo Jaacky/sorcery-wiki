@@ -11,17 +11,18 @@ instead of the usual
 Though this hasn't been proven (please report success).
 
 
-**refinerycms**
+**refinerycms** or **rails_admin**
 
 
 ```ruby
     # Gemfile  # works
     gem 'sorcery'
     gem 'refinerycms'
+    gem 'rails_admin'
 ```
 
 
-The 'sorcery' gem need to be placed before 'refinerycms' gem, otherwise it won't work.
+The 'sorcery' gem need to be placed **BEFORE** 'refinerycms' gem, otherwise it won't work.
 
 under the hood, for example
 
@@ -32,6 +33,16 @@ under the hood, for example
 ```
 
 when require 'refinerycms', it loads User model (I don't know how), which calls `User.authenticates_with_sorcery!`,  but it's not ready (means [user_config](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/initializers/initializer.rb#L61) is not [loaded](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/controller.rb#L15)).  We need first require 'sorcery', which call [ ActionController::Base.send(:include, Sorcery::Controller)](https://github.com/Sorcery/sorcery/blob/master/lib/sorcery/engine.rb#L11),  it prepares user_config for `User.authenticates_with_sorcery!`.
+
+**mongoid**
+
+```ruby
+    # Gemfile  # works
+    gem 'mongoid'
+    gem 'sorcery'
+```
+
+The 'sorcery' gem need to be placed **AFTER** 'mongoid' gem, otherwise it could not work.
 
 **rails_admin**
 
