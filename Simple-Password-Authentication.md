@@ -27,16 +27,16 @@ To get some views and controllers fast, we'll run rails scaffold generator, and 
 We don't want users to edit/view their crypted password or salt, so we'll remove these from all templates in app/views/users/.
 
 We also need to allow UsersController receive form attributes:
+```ruby
+class UsersController < ApplicationController
+  # ...
+  private
 
-    class UsersController < ApplicationController
-      # ...
-      private
-
-      def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation)
-      end
-    end
-
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+end
+```
 We'll need to add a password 'virtual' field instead, that will hold the password before it is encrypted into the database:
 
 ```rhtml
