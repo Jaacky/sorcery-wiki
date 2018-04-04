@@ -3,7 +3,6 @@ In this tutorial we will build upon the app created at [[Simple Password Authent
 First add some db fields:
 
 ### ActiveRecord
-***
 
 ```
 rails g sorcery:install user_activation  --only-submodules
@@ -14,20 +13,12 @@ Which will create:
 
 ```ruby
 class SorceryUserActivation < ActiveRecord::Migration
-  def self.up
+  def change
     add_column :users, :activation_state, :string, :default => nil
     add_column :users, :activation_token, :string, :default => nil
     add_column :users, :activation_token_expires_at, :datetime, :default => nil
 
     add_index :users, :activation_token
-  end
-
-  def self.down
-    remove_index :users, :activation_token
-
-    remove_column :users, :activation_token_expires_at
-    remove_column :users, :activation_token
-    remove_column :users, :activation_state
   end
 end
 ```
@@ -36,7 +27,6 @@ end
 
 
 ### Mongoid
-***
 
 For mongoid just add these three fields to your User model :
 
@@ -55,6 +45,9 @@ index({ activation_token: 1 }, { unique: true, background: true })
 ```
 
     $ rake db:mongoid:create_indexes
+
+
+***
 
 
 Now our database is ready, we need a mailer with two actions:
