@@ -96,8 +96,8 @@ Let's add links to connect to Twitter and Facebook (you would probably use image
 ```ruby
 # app/views/layouts/application.html.erb
 ...
-<%= link_to 'Login with Twitter', login_at(:twitter) %> | 
-<%= link_to 'Login with Facebook', login_at(:facebook) %>
+<%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %> | 
+<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 ```
 
 We'll need a controller to handle the authentications:
