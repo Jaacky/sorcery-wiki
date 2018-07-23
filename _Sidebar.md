@@ -10,6 +10,7 @@
 * [[Brute Force Protection]]
 * [[DataMapper Support]]
 * [[DelayedJob Integration]]
+* [[Distinguish login failure reasons]]
 * [[External]]
 * [[Fetching Currently Active Users]]
 * [[HTTP Basic Auth]]
