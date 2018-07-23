@@ -45,7 +45,7 @@ end
 
 ***
 
-<b id="footnote1">[1]:</b> Please note that this is sometimes considered a security risk. Seperate error messages for wrong login and wrong password might be considered an information leak. It can be used to determine which username is already taken. In case of email addresses as login this means that one can easily find out if a certain person has made an account on the site in question. Then again, your signup form might already do this anyway.
+<a id="footnote1">[1]:</b> Please note that this is sometimes considered a security risk. Seperate error messages for wrong login and wrong password might be considered an information leak. It can be used to determine which username is already taken. In case of email addresses as login this means that one can easily find out if a certain person has made an account on the site in question. Then again, your signup form might already do this anyway.
 
 ***
 
