@@ -162,3 +162,10 @@ end
 If you don't want a success email, in the sorcery configuration of the model, set 'activation_success_email_method_name' to nil.
 
 You can set various other options for this submodule. See the docs for details.
+
+To resend the activation email after user changes email address, add following callbacks to the user model:
+```ruby
+# app/models/user.rb
+before_update :setup_activation, if: -> { email_changed? }
+after_update :send_activation_needed_email!, if: -> { previous_changes["email"].present? }
+```
