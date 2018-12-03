@@ -159,7 +159,7 @@ end
 
 **@user.activate!** will make the user active, send a success email and clear the activation code.
 
-If you don't want a success email, in the sorcery configuration of the model, set 'activation_success_email_method_name' to nil.
+If you don't want a success email, in the sorcery configuration of the model, set `activation_success_email_method_name` to *nil*.
 
 You can set various other options for this submodule. See the docs for details.
 
