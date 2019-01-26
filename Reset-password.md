@@ -188,10 +188,11 @@ I like to put the "forgot password?" form in the same page as the login form:
 
 ```rhtml
 # app/views/user_sessions/_forgot_password_form.html.erb
-<%= form_tag password_resets_path, :method => :post do %>
+<%= form_with url: password_resets_path, local: true, method: :post do |form| %>
   <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %> <%= submit_tag "Reset my password!" %>
+    <%= form.label :email %><br />
+    <%= form.text_field :email %>
+    <%= form.submit "Reset my password!" %>
   </div>
 <% end %>
 ```
@@ -206,10 +207,11 @@ Alternatively you could create a "new" view and link to it from the login page:
 
 ```rhtml
 # app/views/password_resets/new.html.erb
-<%= form_tag password_resets_path, :method => :post do %>
+<%= form_with url: password_resets_path, local: true, method: :post do |form| %>
   <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %> <%= submit_tag "Reset my password!" %>
+    <%= form.label :email %><br />
+    <%= form.text_field :email %>
+    <%= form.submit "Reset my password!" %>
   </div>
 <% end %>
 ```
