@@ -26,7 +26,7 @@ Putting this all together, your `create` action above could look like this inste
 ```ruby
 def create
   login(params[:email], params[:password]) do |user, failure|
-    if user
+    if user && !failure
       redirect_back_or_to(:users, notice: 'Login successful')
     else
       case failure
