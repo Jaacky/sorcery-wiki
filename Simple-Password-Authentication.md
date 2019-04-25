@@ -192,7 +192,7 @@ before_action :require_login
 skip_before_action :require_login, only: [:index, :new, :create]
 
 # app/controllers/user_sessions_controller.rb
-skip_before_action :require_login, only: [:index, :create]
+skip_before_action :require_login, only: [:new, :create]
 ```
 
 The default controller code redirects you to "show" action after "create" completes.
