@@ -26,7 +26,7 @@ def login_from_http_basic
 end
 ```
 
-If this controller uses 'require_login' we'll need to skip it for :login_from_http_basic.
+If this controller uses 'require_login' we'll need to skip it for :login_from_http_basic. (see: https://github.com/Sorcery/sorcery-example-app/blob/master/app/controllers/users_controller.rb)
 
 We just need to route the new action we've added to the controller:
 
