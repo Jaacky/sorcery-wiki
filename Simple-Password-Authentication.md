@@ -119,17 +119,17 @@ Let's create the login form:
 
 ```rhtml
 # app/views/user_sessions/_form.html.erb
-<%= form_tag user_sessions_path, :method => :post do %>
+<%= form_with url: user_sessions_path, method: :post do |f| %>
   <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= f.submit "Login" %>
   </div>
 <% end %>
 ```
