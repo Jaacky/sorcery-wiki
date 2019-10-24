@@ -134,7 +134,7 @@ Nice. The user will get an activation URL, that won't work because we didn't add
 
 ```ruby
 # app/controllers/users_controller.rb
-skip_before_filter :require_login, :only => [:index, :new, :create, :activate]
+skip_before_action :require_login, :only => [:index, :new, :create, :activate]
 
 def activate
   if @user = User.load_from_activation_token(params[:id])
