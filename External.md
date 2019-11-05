@@ -74,7 +74,10 @@ end
 
 You will need to register your app with Twitter/Facebook to get your keys of course.
 
-The 'user_info_mapping' takes care of converting the user info from the provider (Twitter/Facebook) into the attributes that your user has, in this case we only used it to have a username.
+The `user_info_mapping` takes care of converting the user info from the provider (Twitter/Facebook) into the attributes of the User. For example, the "screen_name" that we receive from Twitter will be mapped to the User's `username`.
+
+This means that there needs to be a column in your User table for each attribute being mapped. If your User table doesn't have the necessary columns, make sure to generate them in your migrations or your login system won't work.
+
 
 Now we need to associate User with Authentication:
 
