@@ -164,4 +164,5 @@ The user asks to login using a provider. We send the user to authorize at the pr
 
 -----
 __Note:__ If you need the access token issued by the provider, you can access it by calling `@access_token.token` in your OAuthsController's `callback` method after the user has been logged in.
-If you also need a refresh token, which can be used for obtaining new access tokens (access tokens typically expire in a short time, like an hour), it may be necessary to override the `auth_url` in `config/initializers/sorcery.rb` to specify as such (for more, read https://github.com/Sorcery/sorcery/issues/201).
+If you also need a refresh token, which can be used for obtaining new access tokens (access tokens typically expire in a short time, like an hour), it may be necessary to override the `auth_url` in `config/initializers/sorcery.rb` to specify as such (for more, see Issue [#201](https://github.com/Sorcery/sorcery/issues/201)
+).
