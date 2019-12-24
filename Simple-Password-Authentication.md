@@ -43,7 +43,7 @@ We'll need to add a password 'virtual' field instead, that will hold the passwor
 # app/views/users/_form.html.erb
 <div class="field">
    <%= form.label :password %><br />
-   <%= f.password_field :password %>
+   <%= form.password_field :password %>
 </div>
 <div class="field">
    <%= form.label :password_confirmation %><br />
