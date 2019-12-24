@@ -42,12 +42,12 @@ We'll need to add a password 'virtual' field instead, that will hold the passwor
 ```rhtml
 # app/views/users/_form.html.erb
 <div class="field">
-   <%= f.label :password %><br />
+   <%= form.label :password %><br />
    <%= f.password_field :password %>
 </div>
 <div class="field">
-   <%= f.label :password_confirmation %><br />
-   <%= f.password_field :password_confirmation %>
+   <%= form.label :password_confirmation %><br />
+   <%= form.password_field :password_confirmation %>
 </div>
 ```
 
