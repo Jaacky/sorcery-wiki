@@ -81,10 +81,6 @@ Make it look like this:
 ```ruby
 # app/controllers/user_sessions_controller.rb
 class UserSessionsController < ApplicationController
-  def new
-    @user = User.new
-  end
-
   def create
     @user = login(params[:email], params[:password])
 
@@ -139,7 +135,6 @@ And define some routes. At this point make sure your routes.rb file includes the
 ```ruby
 # config/routes.rb
 root :to => 'users#index'
-resources :user_sessions
 resources :users
 
 get 'login' => 'user_sessions#new', :as => :login
