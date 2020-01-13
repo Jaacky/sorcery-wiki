@@ -29,8 +29,11 @@ class TeamsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:teams)
   end
 
-## But if you are using Rails 5, Rails 6, you will notice that Controller tests are now using in favour of integration tests: and they inherit from ActionDispatch::IntegrationTest. If that is the case, then consider doing one of the following:
-### Assuming you are using mini test - try this - you can add similar helper methods if you are using rspec.
+## But if you are using Rails 5, Rails 6, you will notice that Controller tests 
+## are now dropped in favour of integration tests: and they inherit from 
+## ActionDispatch::IntegrationTest. If that is the case, then consider doing one of
+## the following: Assuming you are using mini test - try this - you can add similar 
+## helper methods if you are using rspec.
 
 class ActionDispatch::IntegrationTest
   include Sorcery::TestHelpers::Rails::Integration ## Add these test helpers.
