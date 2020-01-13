@@ -11,6 +11,7 @@ noam:
 # TestCase
 For simple out of the box testing:
 ```ruby
+# if you are inheriting from ActionController::TestCase try this:  
 class TeamsControllerTest < ActionController::TestCase
   include Sorcery::TestHelpers::Rails::Integration
   include Sorcery::TestHelpers::Rails::Controller
@@ -27,6 +28,19 @@ class TeamsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:teams)
   end
+
+## But if you are using Rails 5, Rails 6, you will notice that Controller tests are now using in favour of integration tests: and they inherit from ActionDispatch::IntegrationTest. If that is the case, then consider doing one of the following:
+### Assuming you are using mini test - try this - you can add similar helper methods if you are using rspec.
+
+class ActionDispatch::IntegrationTest
+  include Sorcery::TestHelpers::Rails::Integration ## Add these test helpers.
+
+  def login_user(user)
+    # post the login and follow through
+    post user_sessions_path, params: { email: user.email, password: 'secret' } # ensure that the password you set here conforms to what you have set in your fixtures/factory. and also ensure that your session creation URL is set appropriately: whether it be: user_sessions_path (if you have been following the tutorials) or otherwise.
+    follow_redirect!
+  end
+end
 ...
 ```
 
