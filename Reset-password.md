@@ -33,30 +33,6 @@ We need to edit the mailer and add a 'user' parameter to the action because sorc
 # app/mailers/user_mailer.rb
 def reset_password_email(user)
 ...
-
-## After you have done the above, you may wish to correct test/mailers/user_mailer_test.rb
-## If you are using mini-test consider the below, and adapt to the testing framework 
-## you may be using:
-
-# test/mailers/user_mailer_test.rb
-require 'test_helper'
-
-class UserMailerTest < ActionMailer::TestCase
-  setup do
-    @user = users(:one) # Use a factory, or fixture, or helper method in your case
-  end
-
-  test "reset_password_email" do
-    mail = UserMailer.reset_password_email(@user)
-    assert_equal "Your password has been reset", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
-  end
-
-end
-
-
 ```
 
 Then add the reset_password submodule, and define what mailer to use:
