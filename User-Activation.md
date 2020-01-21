@@ -118,6 +118,28 @@ To login to the site, just follow this link: <%= @url %> .
 Thanks for joining and have a great day!
 ```
 
+Here is the equivalent in html:
+
+```ruby
+# app/views/user_mailer/activation_needed_email.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1> Welcome <%= @user.email %> </h1>
+    <p>
+      You have successfully signed up to www.example.com, and your username is: <%= @user.email %>.
+    </p>
+    To login to the site, just follow this link: <%= @url %> .
+    <p>
+    </p>
+    <p>Thanks for joining and have a great day!</p>    
+  </body>
+</html>
+```
+
 ```ruby
 # app/views/user_mailer/activation_success_email.text.erb
 Congratulations, <%= @user.email %>!
