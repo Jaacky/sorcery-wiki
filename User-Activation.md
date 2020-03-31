@@ -88,19 +88,30 @@ Rails.application.config.sorcery.configure do |config|
 end
 ```
 
+Add the routes accordingly:
+
+```ruby
+# config/routes.rb
+resources :users do
+  member do
+    get :activate
+  end
+end
+```
+
 Now when a user is created, an email will be sent to him. Currently it's not a very informative email, but we will fix that:
 
 ```ruby
 # app/mailers/user_mailer.rb
 def activation_needed_email(user)
   @user = user
-  @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
+  @url  = activate_user_url(@user.reset_password_token)
   mail(to: user.email, subject: 'Welcome to My Awesome Site')
 end
 
 def activation_success_email(user)
   @user = user
-  @url  = "http://0.0.0.0:3000/login"
+  @url  = login_url
   mail(to: user.email, subject: 'Your account is now activated')
 end
 ```
@@ -168,16 +179,6 @@ def activate
 end
 ```
 
-And fix the routes accordingly:
-
-```ruby
-# config/routes.rb
-resources :users do
-  member do
-    get :activate
-  end
-end
-```
 
 **@user.activate!** will make the user active, send a success email and clear the activation code.
 
