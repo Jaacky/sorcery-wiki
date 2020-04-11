@@ -105,7 +105,7 @@ Now when a user is created, an email will be sent to him. Currently it's not a v
 # app/mailers/user_mailer.rb
 def activation_needed_email(user)
   @user = user
-  @url  = activate_user_url(@user.reset_password_token)
+  @url  = activate_user_url(@user.activation_token)
   mail(to: user.email, subject: 'Welcome to My Awesome Site')
 end
 
