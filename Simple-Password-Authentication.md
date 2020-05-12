@@ -66,6 +66,13 @@ class User < ActiveRecord::Base
 end
 ```
 
+And we need to define routes.
+```ruby
+# config/routes.rb
+root :to => 'users#index'
+resources :users
+```
+
 Now run the app and create a new user at [http://0.0.0.0:3000/users](http://0.0.0.0:3000/users).
 Voila! The password was automatically encrypted, and a salt was also auto-created!
 By default the encryption algorithm used is BCrypt (using the bcrypt-ruby gem) but that can be configured, as well as the salt, and the database field names.
