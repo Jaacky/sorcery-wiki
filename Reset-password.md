@@ -112,7 +112,7 @@ Add the rest:
 
 ```ruby
 # config/routes.rb
-resources :password_resets, only: [:create, :edit, :update]
+resource :password_resets, only: [:create, :edit, :update]
 ```
 
 ```rhtml
