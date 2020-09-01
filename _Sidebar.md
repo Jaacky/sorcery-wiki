@@ -12,7 +12,7 @@
 * [[DelayedJob Integration]]
 * [[Distinguish login failure reasons]]
 * [[External]]
-* [[External Microsoft Graph authentication]]
+* [[External---Microsoft-Graph-authentication]]
 * [[Fetching Currently Active Users]]
 * [[HTTP Basic Auth]]
 * [[Integration Testing|Integration Testing with Rspec, Capybara and Fabricator]]
