@@ -63,7 +63,7 @@ class PasswordResetsController < ApplicationController
   skip_before_action :require_login
     
   # request password reset.
-  # you get here when the user entered his email in the reset password form and submitted it.
+  # you get here when the user entered their email in the reset password form and submitted it.
   def create 
     @user = User.find_by_email(params[:email])
         
@@ -217,4 +217,4 @@ Alternatively you could create a "new" view and link to it from the login page:
 <% end %>
 ```
 
-So now in the login form a user can put his email in the 'forgot password' form, get instructions to his email with a link. With that link, we get to a form where the user can enter a new password, and from there he is set.
+So now in the login form a user can put their email in the 'forgot password' form, get instructions to their email with a link. With that link, we get to a form where the user can enter a new password, and from there they are set.
