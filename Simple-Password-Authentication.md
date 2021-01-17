@@ -117,7 +117,7 @@ Let's create the login form:
 
 <%= render 'form' %>
 
-<%= link_to 'Back', user_sessions_path %>
+<%= link_to 'Back', users_path %>
 ```
 
 ```rhtml
