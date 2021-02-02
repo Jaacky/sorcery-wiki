@@ -31,4 +31,4 @@ Then add the brute_force_protection submodule:
 Rails.application.config.sorcery.submodules = [:brute_force_protection, blabla, blablu, ...]
 ```
 
-That's it! You now only need to configure options like how many failed logins are allowed and for how long to lock an account when this number has been reached. See the docs for specifics.
+That's it! You now only need to configure options like how many failed logins are allowed and for how long to lock an account when this number has been reached. See the docs for specifics, or refer to the instructions in your `config/initializers/sorcery.rb` file - considering the "brute force" section.
