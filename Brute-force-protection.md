@@ -106,14 +106,14 @@ We need to create the unlock url and controllers:
 ```ruby
   # routes.rb
   scope module: :users do
-    get "unlock_accounts/:token", to: "unlock_accounts#create", as: "unlock_accounts"
+    get "unlock_accounts/:token", to: "unlock_accounts#show", as: "unlock_accounts"
   end
 
   # users/unlock_accounts_controller.rb
   module Users
   class UnlockAccountsController < ApplicationController
-    skip_before_action :require_login, :only => [:get]
-    def get
+    skip_before_action :require_login, :only => [:show]
+    def show
       if @user = User.load_from_unlock_token(params[:token])
         @user.login_unlock!
         redirect_to login_path, notice: "Please reset your password if you have forgotten it, or otherwise log in: #{view_context.link_to "here ", login_path}."
