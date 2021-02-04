@@ -30,17 +30,18 @@ Then add the brute_force_protection submodule:
 # config/initializers/sorcery.rb
 Rails.application.config.sorcery.submodules = [:brute_force_protection, blabla, blablu, ...]
 ```
-Now please refer to your `config/initializers/sorcery.rb` file to customize specifics that are required - it will not work properly without customizing it. Here are some examples.
+Refer to your `config/initializers/sorcery.rb` file to customize specifics that are required - it will not work properly without customization: 
 
 ```ruby
 # config/initializers/sorcery.rb
-user.consecutive_login_retries_amount_limit = 50 # 50 is the limit you can retry with a wrong password without being locked out
-user.login_lock_time_period = (60 * 5) # you'll be locked out for 60 * 5 seconds
+
+user.consecutive_login_retries_amount_limit = 50 
+user.login_lock_time_period = (60 * 5) # in seconds
 
 # You'll also need to specify a mailer, a mailer action and a view so that password unlock instructions are sent.
 user.unlock_token_mailer = User
 
-# you can configure whether you want an unlock email to be sent immediately, as well as the method name of the mailer. The default is: send_unlock_token_email
+# default mailer action is: send_unlock_token_email - but is configurable
 ```
 
 You will also need to configure your `sessions_controller.rb` or equivalent file to register that an incorrect login has occurred which will increase the `failed_logins_count` on the relevant user model:
@@ -65,4 +66,12 @@ Now please configure your Mailer
 
 ```ruby
 # UserMailer.rb
+def send_unlock_token_email(user_id)
+    @user = User.find(user_id)
+    # @url  = # add unlock account url
+    mail(:to => @user.email,
+         :subject => "Please unlock your account",
+         :from => "#{@user.email}"
+         )
+  end
 ```
