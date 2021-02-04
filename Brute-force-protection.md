@@ -38,6 +38,8 @@ Refer to your `config/initializers/sorcery.rb` file to customize specifics that 
 user.consecutive_login_retries_amount_limit = 50 
 user.login_lock_time_period = (60 * 5) # in seconds
 
+user.unlock_token_mailer_disabled = true # I want to have full control over when and how emails are sent
+
 # You'll also need to specify a mailer, a mailer action and a view so that password unlock instructions are sent.
 user.unlock_token_mailer = UserMailer
 
@@ -56,7 +58,9 @@ def create
       when :invalid_password
         user.register_failed_login!
       when :locked
-        ...
+        UserMailer.activation_needed_email(user.id).deliver_later
+        puts "oh no, you're locked out! Please check your email" 
+      end
      end
   end
 end
