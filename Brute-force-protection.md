@@ -77,14 +77,14 @@ def send_unlock_token_email(user_id)
 
 
 # mailers/users/send_unlock_token_email.html.erb 
-                    <h1>Hello, <%= @user.email %></h1>
-                    <p>
-                      You've been locked out of your account, because of too many incorrect password attempts.
-                    </p>
-                    <p>
-                      To unlock, just follow this link: <%= link_to("unlock account.", @url) %>
-                    </p>
-                    <p>Have a great day!</p>
+<h1>Hello, <%= @user.email %></h1>
+<p>
+	You've been locked out of your account, because of too many incorrect password attempts.
+</p>
+<p>
+	To unlock, just follow this link: <%= link_to("unlock account.", @url) %>
+</p>
+<p>Have a great day!</p>
 
 # mailers/users/send_unlock_token_email.text.erb 
 Hello, <%= @user.email %>
