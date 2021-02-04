@@ -45,6 +45,7 @@ You will also need to configure your `sessions_controller.rb` or equivalent file
 ```ruby
 # sessions_controller
 # here is a rough sample:
+def create
 login(params[:email], params[:password], params[:remember]) do |user, failure|      
         if user 
         else
@@ -55,6 +56,6 @@ login(params[:email], params[:password], params[:remember]) do |user, failure|
             when :locked
               flash.now[:alert] = "Too many incorrect attempts. We've locked your account - please check your email to unlock"
         end
-      end
-    end
+end
+end
 ```
