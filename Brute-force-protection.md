@@ -74,4 +74,50 @@ def send_unlock_token_email(user_id)
          :from => "#{@user.email}"
          )
   end
+
+
+# mailers/users/send_unlock_token_email.html.erb 
+                    <h1>Hello, <%= @user.email %></h1>
+                    <p>
+                      You've been locked out of your account, because of too many incorrect password attempts.
+                    </p>
+                    <p>
+                      To unlock, just follow this link: <%= link_to("unlock account.", @url) %>
+                    </p>
+                    <p>Have a great day!</p>
+
+# mailers/users/send_unlock_token_email.text.erb 
+Hello, <%= @user.email %>
+===============================================
+
+You've been locked out of your account, because of too many incorrect password attempts.
+
+To unlock, just follow this link: <%= link_to("unlock account.", @url) %>
+
+Have a great day!
 ```
+
+We need to create the unlock url and controllers:
+
+```ruby
+  # routes.rb
+  scope module: :users do
+    get "unlock_accounts/:token", to: "unlock_accounts#create", as: "unlock_accounts"
+  end
+
+  # users/unlock_accounts_controller.rb
+  module Users
+  class UnlockAccountsController < ApplicationController
+    skip_before_action :require_login, :only => [:get]
+    def get
+      if @user = User.load_from_unlock_token(params[:token])
+        @user.login_unlock!
+        redirect_to login_path, notice: "Please reset your password if you have forgotten it, or otherwise log in: #{view_context.link_to "here ", login_path}."
+      else
+        not_authenticated
+      end
+    end
+  end
+end
+```
+
