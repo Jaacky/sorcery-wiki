@@ -44,18 +44,16 @@ You will also need to configure your `sessions_controller.rb` or equivalent file
 
 ```ruby
 # sessions_controller
-# here is a rough sample:
 def create
-login(params[:email], params[:password], params[:remember]) do |user, failure|      
-        if user 
-        else
-            case failure
-            when :invalid_password
-              user.register_failed_login!
-              flash.now[:alert] = "Wrong password provided. Please carefully type your password or #{view_context.link_to " reset it ", new_password_reset_path} if you've forgotten."
-            when :locked
-              flash.now[:alert] = "Too many incorrect attempts. We've locked your account - please check your email to unlock"
-        end
-end
+  login(params[:email], params[:password], params[:remember]) do |user, failure|      
+    if user 
+    else
+      case failure
+      when :invalid_password
+        user.register_failed_login!
+      when :locked
+        ...
+     end
+  end
 end
 ```
