@@ -38,6 +38,9 @@ user.consecutive_login_retries_amount_limit = 50 # 50 is the limit you can retry
 user.login_lock_time_period = (60 * 5) # you'll be locked out for 60 * 5 seconds
 
 # You'll also need to specify a mailer, a mailer action and a view so that password unlock instructions are sent.
+user.unlock_token_mailer = User
+
+# you can configure whether you want an unlock email to be sent immediately, as well as the method name of the mailer. The default is: send_unlock_token_email
 ```
 
 You will also need to configure your `sessions_controller.rb` or equivalent file to register that an incorrect login has occurred which will increase the `failed_logins_count` on the relevant user model:
@@ -56,4 +59,10 @@ def create
      end
   end
 end
+```
+
+Now please configure your Mailer
+
+```ruby
+# UserMailer.rb
 ```
