@@ -39,7 +39,7 @@ user.consecutive_login_retries_amount_limit = 50
 user.login_lock_time_period = (60 * 5) # in seconds
 
 # You'll also need to specify a mailer, a mailer action and a view so that password unlock instructions are sent.
-user.unlock_token_mailer = User
+user.unlock_token_mailer = UserMailer
 
 # default mailer action is: send_unlock_token_email - but is configurable
 ```
