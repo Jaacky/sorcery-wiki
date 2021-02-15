@@ -122,7 +122,7 @@ Let's create the login form:
 
 ```rhtml
 # app/views/user_sessions/_form.html.erb
-<%= form_with url: user_sessions_path, method: :post do |f| %>
+<%= form_with url: login_path, method: :post do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
@@ -145,6 +145,7 @@ root :to => 'users#index'
 resources :users
 
 get 'login' => 'user_sessions#new', :as => :login
+post "login" => "user_sessions#create"
 post 'logout' => 'user_sessions#destroy', :as => :logout
 ```
 
